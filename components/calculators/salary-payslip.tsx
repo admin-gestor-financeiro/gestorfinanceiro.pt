@@ -313,6 +313,9 @@ type Props = {
   disabilityFallback?: boolean;
   /** When provided (compare mode), renders B − A delta chips inline on each row. */
   comparisonResult?: NetSalaryResult | null;
+  /** Controlled period — when provided the parent owns the period state. */
+  period?: Period;
+  onPeriodChange?: (p: Period) => void;
 };
 
 export function SalaryPayslip({
@@ -320,9 +323,18 @@ export function SalaryPayslip({
   locale = "pt",
   disabilityFallback = false,
   comparisonResult,
+  period: periodProp,
+  onPeriodChange,
 }: Props) {
   const t = locale === "en" ? EN : PT;
-  const [period, setPeriod] = useState<Period>("monthly");
+  const [periodInternal, setPeriodInternal] = useState<Period>("monthly");
+
+  // Use controlled period when provided, otherwise fall back to internal state.
+  const period = periodProp ?? periodInternal;
+  function setPeriod(p: Period) {
+    if (onPeriodChange) onPeriodChange(p);
+    else setPeriodInternal(p);
+  }
 
   if (!result) {
     return (
@@ -398,7 +410,7 @@ export function SalaryPayslip({
                 Math.abs(d.net) <= 0.005 && "bg-white/10 text-primary-200",
               )}>
                 {d.net > 0.005 ? "+" : d.net < -0.005 ? "−" : ""}
-                {formatCurrency(Math.abs(d.net))} vs A
+                {formatCurrency(Math.abs(d.net))}
               </span>
             </p>
           )}

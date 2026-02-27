@@ -263,11 +263,14 @@ type ScenarioPanelProps = {
   stacked?: boolean;
   /** When provided, the payslip renders inline B − A delta chips for each row. */
   comparisonResult?: NetSalaryResult | null;
+  /** Controlled period for the payslip period toggle (compare mode sync). */
+  period?: import("@/components/calculators/salary-payslip").Period;
+  onPeriodChange?: (p: import("@/components/calculators/salary-payslip").Period) => void;
 };
 
 function ScenarioPanel({
   state, setState, locale, scenarioLabel, headerActions, resultsRef, stacked = false,
-  comparisonResult,
+  comparisonResult, period, onPeriodChange,
 }: ScenarioPanelProps) {
   const t = locale === "en" ? EN : PT;
 
@@ -453,7 +456,14 @@ function ScenarioPanel({
 
       {/* Payslip */}
       <div ref={resultsRef} className={stacked ? "w-full" : "w-full lg:sticky lg:top-20 lg:min-w-0"}>
-        <SalaryPayslip result={result} locale={locale} disabilityFallback={false} comparisonResult={comparisonResult} />
+        <SalaryPayslip
+          result={result}
+          locale={locale}
+          disabilityFallback={false}
+          comparisonResult={comparisonResult}
+          period={period}
+          onPeriodChange={onPeriodChange}
+        />
       </div>
 
     </div>
@@ -478,6 +488,8 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
   // ── Compare mode state ──
   const [compareMode, setCompareMode] = useState(false);
   const [activeTab, setActiveTab]     = useState<"a" | "b">("a");
+  // Shared period for both payslips in compare mode so toggling one syncs the other.
+  const [comparePeriod, setComparePeriod] = useState<import("@/components/calculators/salary-payslip").Period>("monthly");
 
   const resultsRefA = useRef<HTMLDivElement | null>(null);
   const resultsRefB = useRef<HTMLDivElement | null>(null);
@@ -504,6 +516,8 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
       : undefined,
     resultsRef: resultsRefA,
     stacked: compareMode,
+    period: compareMode ? comparePeriod : undefined,
+    onPeriodChange: compareMode ? setComparePeriod : undefined,
   });
 
   const panelB = ScenarioPanel({
@@ -514,6 +528,8 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
     resultsRef: resultsRefB,
     stacked: true,
     comparisonResult: panelA.result,
+    period: comparePeriod,
+    onPeriodChange: setComparePeriod,
   });
 
   const tabOptions = [
