@@ -57,6 +57,9 @@ type FormState = {
   feeRegistrationNotary: string;
   feeBankValuation: string;
   feeBankProcessing: string;
+  // Insurance (for TAEG)
+  lifeInsuranceMonthly: string;
+  propertyInsuranceMonthly: string;
 };
 
 type ComparisonItem = {
@@ -178,6 +181,18 @@ const STRINGS = {
     totalsTitle: "Totais do crédito",
     totalPaidLabel: "Total pago (capital + juros)",
     totalInterestLabel: "Total de juros pagos",
+    // Insurance section (for TAEG)
+    sectionInsurance: "Seguros — para TAEG completa",
+    lifeInsuranceLabel: "Seguro de vida (€/mês)",
+    propertyInsuranceLabel: "Seguro multirriscos (€/mês)",
+    insuranceNote: "Introduza os prémios mensais para calcular a TAEG completa conforme exigido pelo Decreto-Lei n.º 74-A/2017. Deixe a zero para mostrar apenas a TAN.",
+    insurancePlaceholder: "0",
+    // TAEG / MTIC
+    taegLabel: "TAEG",
+    taegFullName: "Taxa Anual de Encargos Efectiva Global",
+    mticLabel: "MTIC",
+    mticFullName: "Montante Total Imputado ao Consumidor",
+    taegNoInsurance: "Sem seguros introduzidos — a TAEG inclui apenas os encargos do banco. Abra a secção «Seguros» para uma TAEG completa.",
     // Disclaimer
     disclaimer: "Simulação de carácter informativo. Os valores apresentados são estimativas baseadas nos dados introduzidos. Consulte o seu banco e reveja a FINE (Ficha de Informação Normalizada Europeia) antes de tomar qualquer decisão.",
     // Compare mode
@@ -276,6 +291,19 @@ const STRINGS = {
     totalsTitle: "Loan totals",
     totalPaidLabel: "Total paid (principal + interest)",
     totalInterestLabel: "Total interest paid",
+    // Insurance section (for TAEG)
+    sectionInsurance: "Insurance — for complete TAEG",
+    lifeInsuranceLabel: "Life insurance (€/month)",
+    propertyInsuranceLabel: "Property insurance (€/month)",
+    insuranceNote: "Enter monthly premiums to compute the full TAEG (APR) as required by Decree-Law 74-A/2017. Leave at zero to display TAN only.",
+    insurancePlaceholder: "0",
+    // TAEG / MTIC
+    taegLabel: "TAEG (APR)",
+    taegFullName: "Annual Percentage Rate of charge",
+    mticLabel: "MTIC",
+    mticFullName: "Total amount payable by the consumer",
+    taegNoInsurance: "No insurance entered — TAEG only includes bank fees. Open the Insurance section for a complete APR.",
+    // Disclaimer
     disclaimer: "For informational purposes only. Values are estimates based on inputs provided. Consult your bank and review the ESIS (European Standardised Information Sheet) before making any decision.",
     addScenario: "Add scenario",
     removeScenario: "Remove",
@@ -321,6 +349,64 @@ function computeDstiPct(payment: number, existingDebt: number, netIncome: number
   return Math.round(((payment + existingDebt) / netIncome) * 10000) / 100;
 }
 
+/**
+ * Compute TAEG (APR) and MTIC per Directive 2014/17/EU Annex I and D.L. 74-A/2017.
+ *
+ * TAEG equation:  effectiveLoan = ∑(k=1..n) [ monthlyTotal / (1+m)^k ]
+ *   where effectiveLoan = loanAmount − upfront bank fees (processing + valuation)
+ *         monthlyTotal  = monthlyPayment + lifeIns + propertyIns
+ *         m             = effective monthly rate → TAEG = (1+m)^12 − 1
+ *
+ * MTIC = all monthly payments + all insurance over term + upfront bank fees.
+ * Does NOT include notary, registry, IMT or stamp duty (third-party / tax costs).
+ *
+ * Solved via Newton-Raphson on the standard annuity equation.
+ */
+function computeTaeg(
+  loanAmount: number,
+  monthlyPayment: number,
+  termMonths: number,
+  lifeInsMonthly: number,
+  propInsMonthly: number,
+  bankProcessingFee: number,
+  bankValuationFee: number,
+): { taeg: number; mtic: number } | null {
+  if (loanAmount <= 0 || termMonths <= 0 || monthlyPayment <= 0) return null;
+
+  const upfrontFees = bankProcessingFee + bankValuationFee;
+  const effectiveLoan = loanAmount - upfrontFees;
+  const monthlyTotal = monthlyPayment + lifeInsMonthly + propInsMonthly;
+
+  if (effectiveLoan <= 0 || monthlyTotal <= 0) return null;
+
+  const n = termMonths;
+  let m = 0.005; // initial guess: ~0.5 %/month ≈ 6 % annual
+
+  for (let i = 0; i < 200; i++) {
+    const factor = Math.pow(1 + m, -n);
+    const annuity = monthlyTotal * (1 - factor) / m;
+    const f = effectiveLoan - annuity;
+
+    // d(annuity)/dm  =  monthlyTotal * [ n*(1+m)^(-n-1)/m  −  (1-(1+m)^(-n))/m² ]
+    const dAnnuity = monthlyTotal * (
+      n * Math.pow(1 + m, -n - 1) / m - (1 - factor) / (m * m)
+    );
+    const df = -dAnnuity;
+
+    if (Math.abs(df) < 1e-15) break;
+    const delta = f / df;
+    m -= delta;
+    if (Math.abs(delta) < 1e-10) break;
+  }
+
+  if (m <= 0 || !isFinite(m)) return null;
+
+  const taeg = (Math.pow(1 + m, 12) - 1) * 100;
+  const mtic = monthlyPayment * n + (lifeInsMonthly + propInsMonthly) * n + upfrontFees;
+
+  return { taeg, mtic };
+}
+
 // ─── Default form state ───────────────────────────────────────────────────────
 
 function defaultForm(locale: Locale): FormState {
@@ -346,6 +432,8 @@ function defaultForm(locale: Locale): FormState {
     feeRegistrationNotary: FEE_DEFAULTS.registrationNotary.toString(),
     feeBankValuation: FEE_DEFAULTS.bankValuation.toString(),
     feeBankProcessing: FEE_DEFAULTS.bankProcessing.toString(),
+    lifeInsuranceMonthly: "",
+    propertyInsuranceMonthly: "",
   };
 }
 
@@ -1139,6 +1227,55 @@ function ComparePanel({
   );
 }
 
+// ─── TaegPanel ────────────────────────────────────────────────────────────────
+
+function TaegPanel({
+  taeg,
+  mtic,
+  hasInsurance,
+  t,
+  fmtLocale,
+  locale,
+}: {
+  taeg: number;
+  mtic: number;
+  hasInsurance: boolean;
+  t: typeof STRINGS[Locale];
+  fmtLocale: string;
+  locale: Locale;
+}) {
+  return (
+    <Card>
+      <CardBody className="space-y-3">
+        <div className="grid grid-cols-2 gap-4">
+          {/* TAEG */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{t.taegLabel}</p>
+            <p className="mt-1 text-2xl font-bold text-neutral-900">
+              {taeg.toLocaleString(fmtLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%
+            </p>
+            <p className="mt-0.5 text-xs text-neutral-400">{t.taegFullName}</p>
+          </div>
+          {/* MTIC */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{t.mticLabel}</p>
+            <p className="mt-1 text-2xl font-bold text-neutral-900">
+              {fmtCurrency(mtic, fmtLocale)}
+            </p>
+            <p className="mt-0.5 text-xs text-neutral-400">{t.mticFullName}</p>
+          </div>
+        </div>
+        {!hasInsurance && (
+          <p className="flex items-start gap-1.5 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-700">
+            <Info className="mt-0.5 h-3 w-3 shrink-0" />
+            {t.taegNoInsurance}
+          </p>
+        )}
+      </CardBody>
+    </Card>
+  );
+}
+
 // ─── MortgageCalculator ───────────────────────────────────────────────────────
 
 export function MortgageCalculator({ locale = "pt" }: { locale?: Locale }) {
@@ -1263,6 +1400,23 @@ export function MortgageCalculator({ locale = "pt" }: { locale?: Locale }) {
 
   const hasIncome = parseNum(form.netIncome) > 0;
   const maxTerm = maxTermYears(0);
+
+  const lifeInsurance = parseNum(form.lifeInsuranceMonthly);
+  const propertyInsurance = parseNum(form.propertyInsuranceMonthly);
+  const hasInsurance = lifeInsurance > 0 || propertyInsurance > 0;
+
+  const taegMtic = useMemo(() => {
+    if (!result) return null;
+    return computeTaeg(
+      result.loanAmount,
+      result.monthlyPayment,
+      result.termMonths,
+      lifeInsurance,
+      propertyInsurance,
+      result.upfrontCosts.bankProcessing,
+      result.upfrontCosts.bankValuation,
+    );
+  }, [result, lifeInsurance, propertyInsurance]);
 
   // ── Euribor source label ────────────────────────────────────────────────
 
@@ -1646,6 +1800,50 @@ export function MortgageCalculator({ locale = "pt" }: { locale?: Locale }) {
               </CardBody>
             </Card>
 
+            {/* Insurance card — used for TAEG calculation */}
+            <Card>
+              <Collapsible
+                trigger={<span className="text-sm font-semibold text-neutral-800">{t.sectionInsurance}</span>}
+                triggerClassName="px-6 py-4"
+                contentClassName="border-t border-neutral-100"
+              >
+                <div className="px-6 py-5 space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-neutral-700">{t.lifeInsuranceLabel}</label>
+                    <div className="relative">
+                      <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-neutral-400 text-sm">€</span>
+                      <input
+                        type="text"
+                        inputMode="decimal"
+                        value={form.lifeInsuranceMonthly}
+                        onChange={(e) => set("lifeInsuranceMonthly", e.target.value.replace(/[^0-9.,]/g, ""))}
+                        placeholder={t.insurancePlaceholder}
+                        className="w-full rounded-lg border border-neutral-300 bg-white py-2 pl-8 pr-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-neutral-700">{t.propertyInsuranceLabel}</label>
+                    <div className="relative">
+                      <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-neutral-400 text-sm">€</span>
+                      <input
+                        type="text"
+                        inputMode="decimal"
+                        value={form.propertyInsuranceMonthly}
+                        onChange={(e) => set("propertyInsuranceMonthly", e.target.value.replace(/[^0-9.,]/g, ""))}
+                        placeholder={t.insurancePlaceholder}
+                        className="w-full rounded-lg border border-neutral-300 bg-white py-2 pl-8 pr-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                      />
+                    </div>
+                  </div>
+                  <p className="flex items-start gap-1.5 text-xs text-neutral-400">
+                    <Info className="mt-0.5 h-3 w-3 shrink-0" />
+                    {t.insuranceNote}
+                  </p>
+                </div>
+              </Collapsible>
+            </Card>
+
             {/* Advanced options */}
             <Card>
               <Collapsible
@@ -1764,6 +1962,18 @@ export function MortgageCalculator({ locale = "pt" }: { locale?: Locale }) {
                     sub={t.totalInterestLabel}
                   />
                 </div>
+
+                {/* TAEG / MTIC */}
+                {taegMtic && (
+                  <TaegPanel
+                    taeg={taegMtic.taeg}
+                    mtic={taegMtic.mtic}
+                    hasInsurance={hasInsurance}
+                    t={t}
+                    fmtLocale={fmtLocale}
+                    locale={locale}
+                  />
+                )}
 
                 {/* DSTI badge */}
                 {hasIncome && (

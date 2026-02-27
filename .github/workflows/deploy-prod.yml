@@ -59,28 +59,30 @@ jobs:
           TOTAL=$(git log $RANGE --oneline 2>/dev/null | wc -l | tr -d ' ')
           [ -z "$TOTAL" ] || [ "$TOTAL" -eq "0" ] && TOTAL=1
 
-          # Build commit list: subject only, truncated at 80 chars, max 10 shown
-          COMMITS=$(git log $RANGE --pretty=format:"• \`%h\` %s" 2>/dev/null | \
-            awk '{ if (length($0) > 85) print substr($0, 1, 82) "…"; else print }' | \
+          # Build commit list: subject only, max 10 shown.
+          # Single-quoted format so bash never interprets the backticks as command substitution.
+          # Truncate per-line at 120 chars (Discord field cap is 1024; 10×120 = 1200 is fine).
+          COMMITS=$(git log $RANGE --pretty=format:'• `%h` %s' 2>/dev/null | \
+            awk '{ if (length($0) > 120) print substr($0, 1, 117) "…"; else print }' | \
             head -10)
 
           # Fallback: use git log subject (never head_commit.message — it includes the full body)
           if [ -z "$COMMITS" ]; then
             SUBJECT=$(git log -1 --pretty=format:"%s" "$COMMIT_SHA")
-            SUBJECT="${SUBJECT:0:80}"
+            SUBJECT="${SUBJECT:0:110}"
             COMMITS="• \`${SHORT_SHA}\` ${SUBJECT}"
           fi
 
           # Append overflow count if there are more than 10 commits
           if [ "$TOTAL" -gt 10 ]; then
-            COMMITS="${COMMITS}"$'\n'"*… e mais $((TOTAL - 10)) commit(s)*"
+            COMMITS="${COMMITS}"$'\n'"*… and $((TOTAL - 10)) more*"
           fi
 
           # Description line
           if [ "$TOTAL" -eq 1 ]; then
-            DESCRIPTION="**1 commit** deployado em \`${BRANCH}\`"
+            DESCRIPTION="**1 commit** pushed to \`${BRANCH}\`"
           else
-            DESCRIPTION="**${TOTAL} commits** deployados em \`${BRANCH}\`"
+            DESCRIPTION="**${TOTAL} commits** pushed to \`${BRANCH}\`"
           fi
 
           # Escape both values for JSON
@@ -91,14 +93,14 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{
               \"embeds\": [{
-                \"title\": \"✅  Deploy · production concluído\",
+                \"title\": \"✅  Deploy · production done\",
                 \"url\": \"${RUN_URL}\",
                 \"description\": ${DESC_JSON},
                 \"color\": 16750848,
                 \"fields\": [
                   { \"name\": \"📦  Commits\", \"value\": ${COMMITS_JSON},                                                         \"inline\": false },
                   { \"name\": \"🌿  Branch\",  \"value\": \"\`${BRANCH}\`\",                                                       \"inline\": true  },
-                  { \"name\": \"👤  Autor\",   \"value\": \"\`${AUTHOR}\`\",                                                       \"inline\": true  },
+                  { \"name\": \"👤  Author\",  \"value\": \"\`${AUTHOR}\`\",                                                       \"inline\": true  },
                   { \"name\": \"🔗  Commit\",  \"value\": \"[\`${SHORT_SHA}\`](${COMMIT_URL})\",                                   \"inline\": true  },
                   { \"name\": \"🌐  Site\",    \"value\": \"[gestorfinanceiro.pt](https://gestorfinanceiro.pt)\",                  \"inline\": false }
                 ],
