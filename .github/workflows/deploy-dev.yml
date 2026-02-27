@@ -22,7 +22,10 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        # npm ci uses the lockfile strictly and misses platform-specific optional
+        # native bindings (e.g. @ast-grep/napi linux binding used by OpenNext).
+        # npm install resolves them correctly for the current runner OS.
+        run: npm install
 
       - name: Build (OpenNext for Cloudflare)
         run: npx opennextjs-cloudflare build
