@@ -278,11 +278,15 @@ function PayslipRow({
 
 function RateBadge({
   label, value, tooltip,
-  delta, deltaHigherIsBetter = false,
+  delta, deltaHigherIsBetter = false, reserveDeltaSpace = false,
 }: {
   label: string; value: string; tooltip?: string;
   delta?: number; deltaHigherIsBetter?: boolean;
+  /** When true, always renders the delta row (invisible when no delta) to keep card height uniform. */
+  reserveDeltaSpace?: boolean;
 }) {
+  const showDelta = delta !== undefined;
+  const showRow   = showDelta || reserveDeltaSpace;
   return (
     <div className="flex flex-col items-center rounded-lg bg-neutral-50 px-3 py-3">
       <span className="flex items-center gap-1 text-xs text-neutral-500">
@@ -290,9 +294,12 @@ function RateBadge({
         {tooltip && <Tooltip content={tooltip} />}
       </span>
       <span className="mt-1 text-xl font-bold tabular-nums text-neutral-800">{value}</span>
-      {delta !== undefined && (
-        <div className="mt-1">
-          <DeltaChip delta={delta} higherIsBetter={deltaHigherIsBetter} format="percent_points" />
+      {showRow && (
+        <div className={cn("mt-1", !showDelta && "invisible")}>
+          {showDelta
+            ? <DeltaChip delta={delta} higherIsBetter={deltaHigherIsBetter} format="percent_points" />
+            : <span className="text-xs">—</span>
+          }
         </div>
       )}
     </div>
@@ -356,6 +363,12 @@ export function SalaryPayslip({
     ? result.totalEmployerCost / result.effectiveMonthlyGross
     : 0;
 
+  // Whether this payslip is inside a compare mode layout (even if it is the baseline A panel).
+  // comparisonResult === undefined  → single mode, no placeholders needed
+  // comparisonResult === null       → compare mode, this is panel A (no deltas, but reserve space)
+  // comparisonResult !== null       → compare mode, this is panel B (show deltas)
+  const inCompareMode = comparisonResult !== undefined;
+
   // ── Deltas (B − A, scaled to the current period) ──
   // Only computed when a comparison baseline is provided (Scenario A result).
   const cmp = comparisonResult ?? null;
@@ -401,16 +414,18 @@ export function SalaryPayslip({
           <p className="mt-1 text-center text-5xl font-bold tabular-nums text-white">
             {fmt(result.netSalary)}
           </p>
-          {d && (
-            <p className="mt-1 text-center text-sm font-semibold tabular-nums">
+          {inCompareMode && (
+            <p className={cn("mt-1 text-center text-sm font-semibold tabular-nums", !d && "invisible")}>
               <span className={cn(
                 "rounded-full px-2.5 py-0.5",
-                d.net > 0.005  && "bg-success-500/30 text-success-100",
-                d.net < -0.005 && "bg-error-500/30 text-red-200",
-                Math.abs(d.net) <= 0.005 && "bg-white/10 text-primary-200",
+                d && d.net > 0.005  && "bg-success-500/30 text-success-100",
+                d && d.net < -0.005 && "bg-error-500/30 text-red-200",
+                (!d || Math.abs(d.net) <= 0.005) && "bg-white/10 text-primary-200",
               )}>
-                {d.net > 0.005 ? "+" : d.net < -0.005 ? "−" : ""}
-                {formatCurrency(Math.abs(d.net))}
+                {d
+                  ? `${d.net > 0.005 ? "+" : d.net < -0.005 ? "−" : ""}${formatCurrency(Math.abs(d.net))}`
+                  : formatCurrency(0)
+                }
               </span>
             </p>
           )}
@@ -441,6 +456,7 @@ export function SalaryPayslip({
               tooltip={t.effectiveIrsTooltip}
               delta={d?.irsRate}
               deltaHigherIsBetter={false}
+              reserveDeltaSpace={inCompareMode}
             />
             <RateBadge
               label={t.totalDeductionLabel}
@@ -448,6 +464,7 @@ export function SalaryPayslip({
               tooltip={t.totalDeductionTooltip}
               delta={d?.totalRate}
               deltaHigherIsBetter={false}
+              reserveDeltaSpace={inCompareMode}
             />
             <RateBadge
               label={t.employerRateLabel}
@@ -455,6 +472,7 @@ export function SalaryPayslip({
               tooltip={t.employerRateTooltip}
               delta={d?.employerRate}
               deltaHigherIsBetter={false}
+              reserveDeltaSpace={inCompareMode}
             />
           </div>
         </CardBody>

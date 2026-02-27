@@ -518,6 +518,9 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
     stacked: compareMode,
     period: compareMode ? comparePeriod : undefined,
     onPeriodChange: compareMode ? setComparePeriod : undefined,
+    // null (not undefined) signals "in compare mode, no delta baseline" so
+    // the payslip reserves space for delta elements and keeps height in sync with B.
+    comparisonResult: compareMode ? null : undefined,
   });
 
   const panelB = ScenarioPanel({
