@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
@@ -19,10 +22,28 @@ const NAV_EN: NavItem[] = [
   { label: "Calculators", href: "/en/calculators" },
 ];
 
+// Explicit path map: PT path → EN path (and reverse lookup builds EN → PT).
+// Add entries here whenever a new bilingual page is created.
+const PATH_MAP: Record<string, string> = {
+  "/": "/en",
+  "/calculadoras": "/en/calculators",
+  "/calculadoras/salario-liquido": "/en/calculators/net-salary",
+};
+
+const REVERSE_MAP = Object.fromEntries(
+  Object.entries(PATH_MAP).map(([pt, en]) => [en, pt])
+);
+
 export function SiteHeader({ locale = "pt", className }: SiteHeaderProps) {
+  const pathname = usePathname();
   const nav = locale === "en" ? NAV_EN : NAV_PT;
   const homeHref = locale === "en" ? "/en" : "/";
-  const altHref = locale === "en" ? "/" : "/en";
+
+  // Resolve the alternate-language href for the current page
+  const altHref =
+    locale === "en"
+      ? (REVERSE_MAP[pathname] ?? "/")
+      : (PATH_MAP[pathname] ?? "/en");
   const altLabel = locale === "en" ? "PT" : "EN";
 
   return (

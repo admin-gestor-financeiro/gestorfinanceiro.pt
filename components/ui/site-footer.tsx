@@ -6,8 +6,20 @@ type SiteFooterProps = {
   className?: string;
 };
 
+const LINKS = {
+  pt: {
+    calculators: "/calculadoras",
+    netSalary: "/calculadoras/salario-liquido",
+  },
+  en: {
+    calculators: "/en/calculators",
+    netSalary: "/en/calculators/net-salary",
+  },
+} as const;
+
 export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
   const year = new Date().getFullYear();
+  const links = LINKS[locale];
 
   const copy =
     locale === "en"
@@ -27,8 +39,6 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
             "Os valores apresentados são estimativas. Verifique sempre com fontes oficiais.",
           rights: `© ${year} Gestor Financeiro. Todos os direitos reservados.`,
         };
-
-  const base = locale === "en" ? "/en" : "";
 
   return (
     <footer className={cn("border-t border-neutral-200 bg-white mt-auto", className)}>
@@ -53,7 +63,7 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={`${base}/calculadoras/salario-liquido`.replace("/en/calculadoras", "/en/calculators/net-salary")}
+                  href={links.netSalary}
                   className="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
                 >
                   {copy.netSalary}
