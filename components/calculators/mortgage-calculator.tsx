@@ -490,7 +490,7 @@ function SummaryCard({
 
 // ─── DstiBadge ────────────────────────────────────────────────────────────────
 
-function DstiBadge({ dsti, locale, t }: { dsti: number | null; locale: Locale; t: typeof STRINGS["pt"] }) {
+function DstiBadge({ dsti, locale, t }: { dsti: number | null; locale: Locale; t: typeof STRINGS[Locale] }) {
   const fmtLocale = locale === "pt" ? "pt-PT" : "en-GB";
   const status = dstiStatus(dsti);
   const colors = {
@@ -532,7 +532,7 @@ function DstiBadge({ dsti, locale, t }: { dsti: number | null; locale: Locale; t
 function UpfrontCostsPanel({
   costs, t, fmtLocale,
 }: {
-  costs: UpfrontCosts; t: typeof STRINGS["pt"]; fmtLocale: string;
+  costs: UpfrontCosts; t: typeof STRINGS[Locale]; fmtLocale: string;
 }) {
   function fmt(v: number, estimated = false) {
     return fmtCurrencyDec(v, fmtLocale) + (estimated ? " *" : "");
@@ -605,7 +605,7 @@ function StressTable({
   stressDeltas: number[];
   onDeltaChange: (index: number, delta: number) => void;
   hasIncome: boolean;
-  t: typeof STRINGS["pt"];
+  t: typeof STRINGS[Locale];
   fmtLocale: string;
   locale: Locale;
 }) {
@@ -652,7 +652,7 @@ function StressTable({
                       </span>
                     ) : (
                       <DeltaStepper
-                        delta={stressDeltas[i - 1]}
+                        delta={stressDeltas[i - 1] ?? 0}
                         onChange={(v) => onDeltaChange(i - 1, v)}
                         locale={locale}
                       />
@@ -690,7 +690,7 @@ function StressTable({
 function ScheduleTable({
   schedule, result, t, fmtLocale,
 }: {
-  schedule: AmortizationRow[]; result: MortgageResult; t: typeof STRINGS["pt"]; fmtLocale: string;
+  schedule: AmortizationRow[]; result: MortgageResult; t: typeof STRINGS[Locale]; fmtLocale: string;
 }) {
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
 
@@ -781,7 +781,7 @@ function CompareColumn({
   onUpdate: (updated: ComparisonItem) => void;
   onRemove: () => void;
   canRemove: boolean;
-  t: typeof STRINGS["pt"];
+  t: typeof STRINGS[Locale];
   fmtLocale: string;
   locale: Locale;
 }) {
@@ -1071,7 +1071,7 @@ function ComparePanel({
   onUpdate: (id: string, updated: ComparisonItem) => void;
   netIncome: string;
   onNetIncomeChange: (v: string) => void;
-  t: typeof STRINGS["pt"];
+  t: typeof STRINGS[Locale];
   fmtLocale: string;
   locale: Locale;
   decSep: string;
