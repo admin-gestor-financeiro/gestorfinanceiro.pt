@@ -346,12 +346,16 @@ function ScenarioPanel({
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-neutral-700">{t.yearLabel}</label>
-                <PillToggle options={yearOptions} value={String(year)} onChange={(v) => set("year", Number(v) as TaxYear)} />
+                <div className="flex h-9 items-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 text-sm font-medium text-neutral-700">
+                  {year}
+                </div>
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-neutral-700">{t.regionLabel}</label>
-                <PillToggle options={regionOptions} value={region} onChange={(v) => set("region", v as Region)} />
-              </div>
+              <Select
+                label={t.regionLabel}
+                options={regionOptions}
+                value={region}
+                onChange={(e) => set("region", e.target.value as Region)}
+              />
             </div>
 
             {/* Gross salary + period toggle */}

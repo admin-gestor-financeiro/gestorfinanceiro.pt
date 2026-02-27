@@ -117,7 +117,7 @@ type IrsBracket = { upTo: number; rate: number; parcel: number };
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-export const TAX_YEARS: TaxYear[] = [2026, 2025];
+export const TAX_YEARS: TaxYear[] = [2026];
 export const DEFAULT_TAX_YEAR: TaxYear = 2026;
 export const DEFAULT_REGION: Region = "continente";
 
