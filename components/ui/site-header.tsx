@@ -25,6 +25,7 @@ const NAV_PT: NavItem[] = [
     children: [
       { label: "Calculadora de Salário Líquido", href: "/calculadoras/salario-liquido" },
       { label: "Simulador de IMT e Imposto de Selo", href: "/calculadoras/simulador-imt" },
+      { label: "Calculadora de Crédito Habitação", href: "/calculadoras/credito-habitacao" },
     ],
   },
 ];
@@ -36,6 +37,7 @@ const NAV_EN: NavItem[] = [
     children: [
       { label: "Net Salary Calculator", href: "/en/calculators/net-salary" },
       { label: "IMT & Stamp Duty Simulator", href: "/en/calculators/imt-simulator" },
+      { label: "Mortgage Calculator", href: "/en/calculators/mortgage-calculator" },
     ],
   },
 ];
@@ -47,6 +49,7 @@ const PATH_MAP: Record<string, string> = {
   "/calculadoras": "/en/calculators",
   "/calculadoras/salario-liquido": "/en/calculators/net-salary",
   "/calculadoras/simulador-imt": "/en/calculators/imt-simulator",
+  "/calculadoras/credito-habitacao": "/en/calculators/mortgage-calculator",
   "/sobre": "/en/about",
   "/contacto": "/en/contact",
 };

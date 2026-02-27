@@ -61,6 +61,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/calculadoras/credito-habitacao`,
+      lastModified: new Date("2026-02-27"),
+      changeFrequency: "yearly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/en/calculators/mortgage-calculator`,
+      lastModified: new Date("2026-02-27"),
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
 
     // ── Content pages ────────────────────────────────────────────────────────
     {

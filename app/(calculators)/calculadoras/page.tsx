@@ -1,53 +1,8 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/ui/json-ld";
-import {
-  buildWebPageSchema,
-  buildBreadcrumbSchema,
-  buildGraphSchema,
-} from "@/lib/seo/structured-data";
+import { structuredData } from "./metadata";
 
-const PAGE_URL = "https://gestorfinanceiro.pt/calculadoras";
-
-export const metadata: Metadata = {
-  title: "Calculadoras Financeiras — Gestor Financeiro",
-  description:
-    "Todas as calculadoras financeiras gratuitas em Portugal: salário líquido, IRS, Segurança Social e muito mais.",
-  alternates: {
-    canonical: "/calculadoras",
-    languages: { "pt-PT": "/calculadoras", en: "/en/calculators" },
-  },
-  openGraph: {
-    title: "Calculadoras Financeiras — Gestor Financeiro",
-    description:
-      "Todas as calculadoras financeiras gratuitas em Portugal: salário líquido, IRS, Segurança Social e muito mais.",
-    url: PAGE_URL,
-    siteName: "Gestor Financeiro",
-    locale: "pt_PT",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Calculadoras Financeiras — Gestor Financeiro",
-    description:
-      "Todas as calculadoras financeiras gratuitas em Portugal: salário líquido, IRS, Segurança Social e muito mais.",
-  },
-};
-
-const structuredData = buildGraphSchema([
-  buildWebPageSchema({
-    type: "CollectionPage",
-    name: "Calculadoras Financeiras",
-    description:
-      "Todas as calculadoras financeiras gratuitas do Gestor Financeiro: salário líquido, IRS, Segurança Social e muito mais.",
-    url: PAGE_URL,
-    inLanguage: "pt-PT",
-  }),
-  buildBreadcrumbSchema([
-    { name: "Início", url: "https://gestorfinanceiro.pt" },
-    { name: "Calculadoras", url: PAGE_URL },
-  ]),
-]);
+export { metadata } from "./metadata";
 
 const CALCULATORS = [
   {
@@ -64,6 +19,14 @@ const CALCULATORS = [
     title: "Simulador de IMT e Imposto de Selo",
     description:
       "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Habitação própria permanente, secundária e outros imóveis.",
+    badge: null,
+  },
+  {
+    href: "/calculadoras/credito-habitacao",
+    emoji: "🏦",
+    title: "Calculadora de Crédito Habitação",
+    description:
+      "Simule a prestação mensal do seu crédito habitação, calcule IMT, Imposto de Selo e todos os custos de aquisição. Inclui taxa de esforço e análise de sensibilidade ao Euribor.",
     badge: null,
   },
 ];

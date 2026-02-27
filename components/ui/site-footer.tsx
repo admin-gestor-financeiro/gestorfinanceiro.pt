@@ -11,6 +11,7 @@ const LINKS = {
     calculators: "/calculadoras",
     netSalary: "/calculadoras/salario-liquido",
     imtSimulator: "/calculadoras/simulador-imt",
+    mortgageCalculator: "/calculadoras/credito-habitacao",
     about: "/sobre",
     contact: "/contacto",
   },
@@ -18,6 +19,7 @@ const LINKS = {
     calculators: "/en/calculators",
     netSalary: "/en/calculators/net-salary",
     imtSimulator: "/en/calculators/imt-simulator",
+    mortgageCalculator: "/en/calculators/mortgage-calculator",
     about: "/en/about",
     contact: "/en/contact",
   },
@@ -34,6 +36,7 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
           calculators: "Calculators",
           netSalary: "Net Salary Calculator",
           imtSimulator: "IMT & Stamp Duty Simulator",
+          mortgageCalculator: "Mortgage Calculator",
           company: "Company",
           about: "About",
           contact: "Contact",
@@ -46,6 +49,7 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
           calculators: "Calculadoras",
           netSalary: "Calculadora de Salário Líquido",
           imtSimulator: "Simulador de IMT e Imposto de Selo",
+          mortgageCalculator: "Calculadora de Crédito Habitação",
           company: "Empresa",
           about: "Sobre nós",
           contact: "Contacto",
@@ -89,6 +93,14 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
                   className="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
                 >
                   {copy.imtSimulator}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={links.mortgageCalculator}
+                  className="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
+                >
+                  {copy.mortgageCalculator}
                 </Link>
               </li>
             </ul>

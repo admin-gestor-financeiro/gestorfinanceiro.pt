@@ -23,6 +23,27 @@ By default:
 -whenever you do research (fetching external data, reading docs, evaluating libraries, investigating tax rules, etc.), save the raw findings to docs/research/<topic>.md and a separate decision document to docs/decisions/<topic>.md. The decision document must start with a "Research" section that links to the corresponding research file (e.g. [Research](../research/<topic>.md)), then document what was decided and why. Never skip the research file — even a brief set of notes counts.
 -Always plan implementations, try to figure out if a task is too complex and will make you run out of execution context and fail to execute the prompt, chose to split the task into smaller ones and ask before moving into the next task. 
 -Each page should be created in Portuguese (main language) but should be translated to English. English page should render on it's own path like gestorfinanceiro/en/<page slug>
+-Metadata separation pattern: always extract `metadata` (Metadata) and `structuredData` into a co-located `metadata.ts` file next to `page.tsx`. The `page.tsx` re-exports metadata with `export { metadata } from "./metadata"` and imports `structuredData` from the same file. This keeps page files slim (UI only) so future edits read fewer tokens.
+
+metadata.ts pattern:
+```typescript
+import type { Metadata } from "next";
+import { build... } from "@/lib/seo/structured-data";
+const PAGE_URL = "https://gestorfinanceiro.pt/...";
+export const metadata: Metadata = { ... };
+export const structuredData = buildGraphSchema([...]);
+```
+
+slim page.tsx pattern:
+```typescript
+import { MyComponent } from "@/components/...";
+import { JsonLd } from "@/components/ui/json-ld";
+import { structuredData } from "./metadata";
+export { metadata } from "./metadata";
+export default function MyPage() {
+  return (<><JsonLd schema={structuredData} /><MyComponent locale="pt" /></>);
+}
+```
 
 Project Structure
 /

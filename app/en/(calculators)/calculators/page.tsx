@@ -1,53 +1,8 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/ui/json-ld";
-import {
-  buildWebPageSchema,
-  buildBreadcrumbSchema,
-  buildGraphSchema,
-} from "@/lib/seo/structured-data";
+import { structuredData } from "./metadata";
 
-const PAGE_URL = "https://gestorfinanceiro.pt/en/calculators";
-
-export const metadata: Metadata = {
-  title: "Financial Calculators — Gestor Financeiro",
-  description:
-    "Free financial calculators for Portugal: net salary, IRS withholding, Social Security and more.",
-  alternates: {
-    canonical: "/en/calculators",
-    languages: { en: "/en/calculators", "pt-PT": "/calculadoras" },
-  },
-  openGraph: {
-    title: "Financial Calculators — Gestor Financeiro",
-    description:
-      "Free financial calculators for Portugal: net salary, IRS withholding, Social Security and more.",
-    url: PAGE_URL,
-    siteName: "Gestor Financeiro",
-    locale: "en_GB",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Financial Calculators — Gestor Financeiro",
-    description:
-      "Free financial calculators for Portugal: net salary, IRS withholding, Social Security and more.",
-  },
-};
-
-const structuredData = buildGraphSchema([
-  buildWebPageSchema({
-    type: "CollectionPage",
-    name: "Financial Calculators",
-    description:
-      "All free financial calculators from Gestor Financeiro: net salary, IRS withholding, Social Security and more.",
-    url: PAGE_URL,
-    inLanguage: "en",
-  }),
-  buildBreadcrumbSchema([
-    { name: "Home", url: "https://gestorfinanceiro.pt/en" },
-    { name: "Calculators", url: PAGE_URL },
-  ]),
-]);
+export { metadata } from "./metadata";
 
 const CALCULATORS = [
   {
@@ -64,6 +19,14 @@ const CALCULATORS = [
     title: "IMT & Stamp Duty Simulator",
     description:
       "Calculate IMT (Property Transfer Tax) and Stamp Duty when buying property in Portugal. Covers primary residence, secondary home and other urban property.",
+    badge: null,
+  },
+  {
+    href: "/en/calculators/mortgage-calculator",
+    emoji: "🏦",
+    title: "Mortgage Calculator",
+    description:
+      "Simulate your monthly mortgage payment, calculate IMT, Stamp Duty and all acquisition costs. Includes debt service-to-income ratio (DSTI) and Euribor sensitivity analysis.",
     badge: null,
   },
 ];

@@ -1,44 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteLayout } from "@/components/ui/site-layout";
 import { JsonLd } from "@/components/ui/json-ld";
-import {
-  buildWebSiteSchema,
-  buildOrganizationSchema,
-  buildGraphSchema,
-} from "@/lib/seo/structured-data";
+import { structuredData } from "./metadata";
 
-const BASE_URL = "https://gestorfinanceiro.pt";
-
-export const metadata: Metadata = {
-  title: "Gestor Financeiro — Calculadoras Financeiras em Portugal",
-  description:
-    "Ferramentas e calculadoras financeiras gratuitas em Portugal: simulador de salário líquido, IRS, Segurança Social e muito mais.",
-  alternates: {
-    canonical: "/",
-    languages: { "pt-PT": "/", en: "/en" },
-  },
-  openGraph: {
-    title: "Gestor Financeiro — Calculadoras Financeiras em Portugal",
-    description:
-      "Ferramentas e calculadoras financeiras gratuitas em Portugal: simulador de salário líquido, IRS, Segurança Social e muito mais.",
-    url: BASE_URL,
-    siteName: "Gestor Financeiro",
-    locale: "pt_PT",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Gestor Financeiro — Calculadoras Financeiras em Portugal",
-    description:
-      "Ferramentas e calculadoras financeiras gratuitas em Portugal: simulador de salário líquido, IRS, Segurança Social e muito mais.",
-  },
-};
-
-const structuredData = buildGraphSchema([
-  buildWebSiteSchema(),
-  buildOrganizationSchema(),
-]);
+export { metadata } from "./metadata";
 
 const CALCULATORS = [
   {
@@ -54,6 +19,13 @@ const CALCULATORS = [
     title: "Simulador de IMT e Imposto de Selo",
     description:
       "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Inclui IMT Jovem e tabelas 2025 para Continente e Regiões Autónomas.",
+  },
+  {
+    href: "/calculadoras/credito-habitacao",
+    emoji: "🏦",
+    title: "Calculadora de Crédito Habitação",
+    description:
+      "Simule a prestação mensal, calcule IMT, Imposto de Selo e todos os custos de aquisição. Inclui taxa de esforço e análise de sensibilidade ao Euribor.",
   },
 ];
 

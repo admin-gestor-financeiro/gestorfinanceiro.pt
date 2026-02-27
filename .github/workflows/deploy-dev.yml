@@ -46,16 +46,46 @@ jobs:
           REPO="${{ github.repository }}"
           COMMIT_URL="https://github.com/${REPO}/commit/${COMMIT_SHA}"
           RUN_URL="https://github.com/${REPO}/actions/runs/${{ github.run_id }}"
+          BEFORE="${{ github.event.before }}"
 
-          # Collect commit messages from this push (up to 10), formatted for Discord
-          COMMITS=$(git log ${{ github.event.before }}..${{ github.sha }} \
-            --pretty=format:"**\`%h\`** %s — *%an*" | head -10)
-          if [ -z "$COMMITS" ]; then
-            COMMITS="**\`${SHORT_SHA}\`** ${{ github.event.head_commit.message }} — *${AUTHOR}*"
+          # Handle first push to branch (before SHA is all zeros)
+          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+            RANGE="-1"
+          else
+            RANGE="${BEFORE}..${COMMIT_SHA}"
           fi
 
-          # Escape for JSON
-          COMMITS_ESCAPED=$(echo "$COMMITS" | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))")
+          # Count total commits in this push
+          TOTAL=$(git log $RANGE --oneline 2>/dev/null | wc -l | tr -d ' ')
+          [ -z "$TOTAL" ] || [ "$TOTAL" -eq "0" ] && TOTAL=1
+
+          # Build commit list: subject only, truncated at 80 chars, max 10 shown
+          COMMITS=$(git log $RANGE --pretty=format:"• \`%h\` %s" 2>/dev/null | \
+            awk '{ if (length($0) > 85) print substr($0, 1, 82) "…"; else print }' | \
+            head -10)
+
+          # Fallback: use git log subject (never head_commit.message — it includes the full body)
+          if [ -z "$COMMITS" ]; then
+            SUBJECT=$(git log -1 --pretty=format:"%s" "$COMMIT_SHA")
+            SUBJECT="${SUBJECT:0:80}"
+            COMMITS="• \`${SHORT_SHA}\` ${SUBJECT}"
+          fi
+
+          # Append overflow count if there are more than 10 commits
+          if [ "$TOTAL" -gt 10 ]; then
+            COMMITS="${COMMITS}"$'\n'"*… e mais $((TOTAL - 10)) commit(s)*"
+          fi
+
+          # Description line
+          if [ "$TOTAL" -eq 1 ]; then
+            DESCRIPTION="**1 commit** deployado em \`${BRANCH}\`"
+          else
+            DESCRIPTION="**${TOTAL} commits** deployados em \`${BRANCH}\`"
+          fi
+
+          # Escape both values for JSON
+          COMMITS_JSON=$(printf '%s' "$COMMITS" | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))")
+          DESC_JSON=$(printf '%s' "$DESCRIPTION" | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))")
 
           curl -s -X POST "$DISCORD_WEBHOOK_URL" \
             -H "Content-Type: application/json" \
@@ -63,12 +93,13 @@ jobs:
               \"embeds\": [{
                 \"title\": \"🚀  Deploy · dev concluído\",
                 \"url\": \"${RUN_URL}\",
-                \"description\": ${COMMITS_ESCAPED},
+                \"description\": ${DESC_JSON},
                 \"color\": 5763719,
                 \"fields\": [
-                  { \"name\": \"🌿  Branch\",  \"value\": \"\`${BRANCH}\`\",                                                              \"inline\": true },
-                  { \"name\": \"👤  Autor\",   \"value\": \"\`${AUTHOR}\`\",                                                              \"inline\": true },
-                  { \"name\": \"🔗  Commit\",  \"value\": \"[\`${SHORT_SHA}\`](${COMMIT_URL})\",                                          \"inline\": true },
+                  { \"name\": \"📦  Commits\", \"value\": ${COMMITS_JSON},                                                                                                 \"inline\": false },
+                  { \"name\": \"🌿  Branch\",  \"value\": \"\`${BRANCH}\`\",                                                                                               \"inline\": true  },
+                  { \"name\": \"👤  Autor\",   \"value\": \"\`${AUTHOR}\`\",                                                                                               \"inline\": true  },
+                  { \"name\": \"🔗  Commit\",  \"value\": \"[\`${SHORT_SHA}\`](${COMMIT_URL})\",                                                                            \"inline\": true  },
                   { \"name\": \"🌐  Site\",    \"value\": \"[gestorfinanceiro-dev.shiny-wind-7b01.workers.dev](https://gestorfinanceiro-dev.shiny-wind-7b01.workers.dev)\", \"inline\": false }
                 ],
                 \"footer\": {

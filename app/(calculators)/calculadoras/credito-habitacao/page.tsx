@@ -1,24 +1,24 @@
-import { ImtCalculator } from "@/components/calculators/imt-calculator";
+import { MortgageCalculator } from "@/components/calculators/mortgage-calculator";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { structuredData } from "./metadata";
 
 export { metadata } from "./metadata";
 
-export default function SimuladorImtPage() {
+export default function CreditoHabitacaoPage() {
   return (
     <>
       <JsonLd schema={structuredData} />
-      <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
         <Breadcrumb
           items={[
             { label: "Início", href: "/" },
             { label: "Calculadoras", href: "/calculadoras" },
-            { label: "Simulador de IMT e Imposto de Selo" },
+            { label: "Calculadora de Crédito Habitação" },
           ]}
         />
       </div>
-      <ImtCalculator locale="pt" />
+      <MortgageCalculator locale="pt" />
     </>
   );
 }

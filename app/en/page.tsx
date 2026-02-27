@@ -1,44 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteLayout } from "@/components/ui/site-layout";
 import { JsonLd } from "@/components/ui/json-ld";
-import {
-  buildWebSiteSchema,
-  buildOrganizationSchema,
-  buildGraphSchema,
-} from "@/lib/seo/structured-data";
+import { structuredData } from "./metadata";
 
-const BASE_URL = "https://gestorfinanceiro.pt";
-
-export const metadata: Metadata = {
-  title: "Gestor Financeiro — Free Financial Calculators for Portugal",
-  description:
-    "Free and up-to-date financial calculators for Portugal: net salary simulator, IRS withholding, Social Security and more.",
-  alternates: {
-    canonical: "/en",
-    languages: { en: "/en", "pt-PT": "/" },
-  },
-  openGraph: {
-    title: "Gestor Financeiro — Free Financial Calculators for Portugal",
-    description:
-      "Free and up-to-date financial calculators for Portugal: net salary simulator, IRS withholding, Social Security and more.",
-    url: `${BASE_URL}/en`,
-    siteName: "Gestor Financeiro",
-    locale: "en_GB",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Gestor Financeiro — Free Financial Calculators for Portugal",
-    description:
-      "Free and up-to-date financial calculators for Portugal: net salary simulator, IRS withholding, Social Security and more.",
-  },
-};
-
-const structuredData = buildGraphSchema([
-  buildWebSiteSchema(),
-  buildOrganizationSchema(),
-]);
+export { metadata } from "./metadata";
 
 const CALCULATORS = [
   {
@@ -54,6 +19,13 @@ const CALCULATORS = [
     title: "IMT & Stamp Duty Simulator",
     description:
       "Calculate IMT and Stamp Duty when buying property in Portugal. Includes IMT Jovem youth exemption and 2025 tables for Mainland and Autonomous Regions.",
+  },
+  {
+    href: "/en/calculators/mortgage-calculator",
+    emoji: "🏦",
+    title: "Mortgage Calculator",
+    description:
+      "Simulate your monthly mortgage payment, calculate IMT, Stamp Duty and all acquisition costs. Includes affordability ratio and Euribor sensitivity analysis.",
   },
 ];
 
