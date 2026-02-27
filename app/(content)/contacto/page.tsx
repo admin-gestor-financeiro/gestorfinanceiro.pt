@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     description:
       "Entre em contacto com a equipa do Gestor Financeiro para dúvidas, sugestões ou parcerias.",
   },
+  robots: { index: false, follow: true },
 };
 
 const structuredData = buildGraphSchema([

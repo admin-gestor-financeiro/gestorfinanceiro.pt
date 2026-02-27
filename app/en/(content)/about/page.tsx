@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     description:
       "Learn about Gestor Financeiro: free and up-to-date financial calculators for Portugal.",
   },
+  robots: { index: false, follow: true },
 };
 
 const structuredData = buildGraphSchema([

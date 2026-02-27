@@ -74,30 +74,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
 
-    // ── Content pages ────────────────────────────────────────────────────────
-    {
-      url: `${BASE_URL}/sobre`,
-      lastModified: new Date("2026-02-27"),
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-    {
-      url: `${BASE_URL}/en/about`,
-      lastModified: new Date("2026-02-27"),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/contacto`,
-      lastModified: new Date("2026-02-27"),
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-    {
-      url: `${BASE_URL}/en/contact`,
-      lastModified: new Date("2026-02-27"),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
   ];
 }

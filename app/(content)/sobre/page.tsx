@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     description:
       "Conheça o Gestor Financeiro: calculadoras financeiras gratuitas e atualizadas em Portugal.",
   },
+  robots: { index: false, follow: true },
 };
 
 const structuredData = buildGraphSchema([

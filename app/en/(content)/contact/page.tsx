@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     description:
       "Get in touch with the Gestor Financeiro team for questions, suggestions or partnerships.",
   },
+  robots: { index: false, follow: true },
 };
 
 const structuredData = buildGraphSchema([
