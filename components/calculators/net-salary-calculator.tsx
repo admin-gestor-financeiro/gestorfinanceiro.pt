@@ -14,6 +14,7 @@ import {
   type MealAllowanceType,
   type DuodecimosOption,
   type NetSalaryInput,
+  type NetSalaryResult,
   type TaxYear,
   type Region,
 } from "@/lib/calculators/net-salary";
@@ -31,7 +32,6 @@ import { PillToggle } from "@/components/ui/pill-toggle";
 import { Collapsible } from "@/components/ui/collapsible";
 import { FloatingBar } from "@/components/ui/floating-bar";
 import { SalaryPayslip } from "@/components/calculators/salary-payslip";
-import { SalaryDiff } from "@/components/calculators/salary-diff";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -261,10 +261,13 @@ type ScenarioPanelProps = {
   resultsRef?: React.RefObject<HTMLDivElement | null>;
   /** Whether to use the side-by-side (lg) layout within this panel (compare mode) */
   stacked?: boolean;
+  /** When provided, the payslip renders inline B − A delta chips for each row. */
+  comparisonResult?: NetSalaryResult | null;
 };
 
 function ScenarioPanel({
   state, setState, locale, scenarioLabel, headerActions, resultsRef, stacked = false,
+  comparisonResult,
 }: ScenarioPanelProps) {
   const t = locale === "en" ? EN : PT;
 
@@ -450,7 +453,7 @@ function ScenarioPanel({
 
       {/* Payslip */}
       <div ref={resultsRef} className={stacked ? "w-full" : "w-full lg:sticky lg:top-20 lg:min-w-0"}>
-        <SalaryPayslip result={result} locale={locale} disabilityFallback={false} />
+        <SalaryPayslip result={result} locale={locale} disabilityFallback={false} comparisonResult={comparisonResult} />
       </div>
 
     </div>
@@ -510,6 +513,7 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
     scenarioLabel: t.scenarioB,
     resultsRef: resultsRefB,
     stacked: true,
+    comparisonResult: panelA.result,
   });
 
   const tabOptions = [
@@ -574,13 +578,6 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
                 {panelB.inner}
               </div>
             </div>
-
-            {/* Differential — full-width row below both panels */}
-            <SalaryDiff
-              resultA={panelA.result}
-              resultB={panelB.result}
-              locale={locale}
-            />
 
           </div>
         )}

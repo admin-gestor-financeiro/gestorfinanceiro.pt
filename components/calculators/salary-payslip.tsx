@@ -204,12 +204,51 @@ const EN: PayslipStrings = {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
+// ─── DeltaChip ────────────────────────────────────────────────────────────────
+// Small inline indicator of the B − A difference for a single metric.
+
+type DeltaFormat = "currency" | "percent_points";
+
+function DeltaChip({
+  delta,
+  higherIsBetter,
+  format = "currency",
+}: {
+  delta: number;
+  higherIsBetter: boolean;
+  format?: DeltaFormat;
+}) {
+  const abs = Math.abs(delta);
+  if (abs < 0.005) return <span className="text-xs text-neutral-400">—</span>;
+
+  const isPositive = delta > 0;
+  const isGood     = higherIsBetter ? isPositive : !isPositive;
+  const sign       = isPositive ? "+" : "−";
+  const formatted  =
+    format === "currency"
+      ? `${sign}${formatCurrency(abs)}`
+      : `${sign}${formatPercent(abs)} pp`;
+
+  return (
+    <span
+      className={cn(
+        "text-xs font-medium tabular-nums",
+        isGood ? "text-success-600" : "text-error-600",
+      )}
+    >
+      {formatted}
+    </span>
+  );
+}
+
 function PayslipRow({
   label, value, tooltip,
   isTotal = false, isPositive = false, isNegative = false, isSeparator = false,
+  delta, deltaHigherIsBetter = true, deltaFormat = "currency",
 }: {
   label: string; value?: string; tooltip?: string;
   isTotal?: boolean; isPositive?: boolean; isNegative?: boolean; isSeparator?: boolean;
+  delta?: number; deltaHigherIsBetter?: boolean; deltaFormat?: DeltaFormat;
 }) {
   if (isSeparator) {
     return <tr><td colSpan={2} className="py-1"><div className="border-t border-neutral-200" /></td></tr>;
@@ -224,17 +263,26 @@ function PayslipRow({
       </td>
       <td className={cn(
         "py-2 text-right tabular-nums text-sm",
-        isTotal   && "font-semibold text-neutral-900",
+        isTotal    && "font-semibold text-neutral-900",
         isPositive && "text-success-600",
         isNegative && "text-error-600",
       )}>
-        {value}
+        <div>{value}</div>
+        {delta !== undefined && (
+          <DeltaChip delta={delta} higherIsBetter={deltaHigherIsBetter} format={deltaFormat} />
+        )}
       </td>
     </tr>
   );
 }
 
-function RateBadge({ label, value, tooltip }: { label: string; value: string; tooltip?: string }) {
+function RateBadge({
+  label, value, tooltip,
+  delta, deltaHigherIsBetter = false,
+}: {
+  label: string; value: string; tooltip?: string;
+  delta?: number; deltaHigherIsBetter?: boolean;
+}) {
   return (
     <div className="flex flex-col items-center rounded-lg bg-neutral-50 px-3 py-3">
       <span className="flex items-center gap-1 text-xs text-neutral-500">
@@ -242,6 +290,11 @@ function RateBadge({ label, value, tooltip }: { label: string; value: string; to
         {tooltip && <Tooltip content={tooltip} />}
       </span>
       <span className="mt-1 text-xl font-bold tabular-nums text-neutral-800">{value}</span>
+      {delta !== undefined && (
+        <div className="mt-1">
+          <DeltaChip delta={delta} higherIsBetter={deltaHigherIsBetter} format="percent_points" />
+        </div>
+      )}
     </div>
   );
 }
@@ -258,9 +311,16 @@ type Props = {
   result: NetSalaryResult | null;
   locale?: Locale;
   disabilityFallback?: boolean;
+  /** When provided (compare mode), renders B − A delta chips inline on each row. */
+  comparisonResult?: NetSalaryResult | null;
 };
 
-export function SalaryPayslip({ result, locale = "pt", disabilityFallback = false }: Props) {
+export function SalaryPayslip({
+  result,
+  locale = "pt",
+  disabilityFallback = false,
+  comparisonResult,
+}: Props) {
   const t = locale === "en" ? EN : PT;
   const [period, setPeriod] = useState<Period>("monthly");
 
@@ -283,6 +343,24 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
   const employerRate = result.effectiveMonthlyGross > 0
     ? result.totalEmployerCost / result.effectiveMonthlyGross
     : 0;
+
+  // ── Deltas (B − A, scaled to the current period) ──
+  // Only computed when a comparison baseline is provided (Scenario A result).
+  const cmp = comparisonResult ?? null;
+  const d = cmp
+    ? {
+        net:          scaleValue(result.netSalary        - cmp.netSalary,        period, result.annualPaymentsCount),
+        gross:        scaleValue(result.grossSalary      - cmp.grossSalary,      period, result.annualPaymentsCount),
+        ss:           scaleValue(result.socialSecurity   - cmp.socialSecurity,   period, result.annualPaymentsCount),
+        irs:          scaleValue(result.irsWithholding   - cmp.irsWithholding,   period, result.annualPaymentsCount),
+        meal:         scaleValue(result.mealAllowanceExempt - cmp.mealAllowanceExempt, period, result.annualPaymentsCount),
+        employer:     scaleValue(result.totalEmployerCost - cmp.totalEmployerCost, period, result.annualPaymentsCount),
+        irsRate:      result.effectiveIrsRate    - cmp.effectiveIrsRate,
+        totalRate:    result.totalDeductionRate  - cmp.totalDeductionRate,
+        employerRate: (result.effectiveMonthlyGross > 0 ? result.totalEmployerCost / result.effectiveMonthlyGross : 0)
+                    - (cmp.effectiveMonthlyGross   > 0 ? cmp.totalEmployerCost   / cmp.effectiveMonthlyGross   : 0),
+      }
+    : null;
 
   // Formula section values
   const atDebug   = result.debug.method === "at_table"      ? result.debug : null;
@@ -311,6 +389,19 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
           <p className="mt-1 text-center text-5xl font-bold tabular-nums text-white">
             {fmt(result.netSalary)}
           </p>
+          {d && (
+            <p className="mt-1 text-center text-sm font-semibold tabular-nums">
+              <span className={cn(
+                "rounded-full px-2.5 py-0.5",
+                d.net > 0.005  && "bg-success-500/30 text-success-100",
+                d.net < -0.005 && "bg-error-500/30 text-red-200",
+                Math.abs(d.net) <= 0.005 && "bg-white/10 text-primary-200",
+              )}>
+                {d.net > 0.005 ? "+" : d.net < -0.005 ? "−" : ""}
+                {formatCurrency(Math.abs(d.net))} vs A
+              </span>
+            </p>
+          )}
 
           {/* Period toggle */}
           <div className="mt-4 flex justify-center">
@@ -336,16 +427,22 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
               label={t.effectiveIrsLabel}
               value={formatPercent(result.effectiveIrsRate)}
               tooltip={t.effectiveIrsTooltip}
+              delta={d?.irsRate}
+              deltaHigherIsBetter={false}
             />
             <RateBadge
               label={t.totalDeductionLabel}
               value={formatPercent(result.totalDeductionRate)}
               tooltip={t.totalDeductionTooltip}
+              delta={d?.totalRate}
+              deltaHigherIsBetter={false}
             />
             <RateBadge
               label={t.employerRateLabel}
               value={formatPercent(employerRate)}
               tooltip={t.employerRateTooltip}
+              delta={d?.employerRate}
+              deltaHigherIsBetter={false}
             />
           </div>
         </CardBody>
@@ -404,6 +501,8 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
                 label={t.grossLabel}
                 value={fmt(result.grossSalary)}
                 tooltip={t.grossTooltip}
+                delta={d?.gross}
+                deltaHigherIsBetter
               />
               {result.duodecimosMonthlyAmount > 0 && (
                 <PayslipRow
@@ -418,12 +517,16 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
                 value={`− ${fmt(result.socialSecurity)}`}
                 tooltip={t.ssTooltip}
                 isNegative
+                delta={d?.ss}
+                deltaHigherIsBetter={false}
               />
               <PayslipRow
                 label={t.irsLabel}
                 value={`− ${fmt(result.irsWithholding)}`}
                 tooltip={t.irsTooltip}
                 isNegative
+                delta={d?.irs}
+                deltaHigherIsBetter={false}
               />
               {result.mealAllowanceExempt > 0 && (
                 <PayslipRow
@@ -431,6 +534,8 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
                   value={`+ ${fmt(result.mealAllowanceExempt)}`}
                   tooltip={t.mealExemptTooltip}
                   isPositive
+                  delta={d?.meal}
+                  deltaHigherIsBetter
                 />
               )}
               <PayslipRow isSeparator label="" />
@@ -439,6 +544,8 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
                 value={fmt(result.netSalary)}
                 tooltip={t.netTooltip}
                 isTotal
+                delta={d?.net}
+                deltaHigherIsBetter
               />
             </tbody>
           </table>
@@ -468,6 +575,8 @@ export function SalaryPayslip({ result, locale = "pt", disabilityFallback = fals
                 label={t.employerTotalLabel}
                 value={fmt(result.totalEmployerCost)}
                 isTotal
+                delta={d?.employer}
+                deltaHigherIsBetter={false}
               />
             </tbody>
           </table>
