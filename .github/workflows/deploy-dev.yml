@@ -19,12 +19,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        # npm ci uses the lockfile strictly and misses platform-specific optional
-        # native bindings (e.g. @ast-grep/napi linux binding used by OpenNext).
-        # npm install resolves them correctly for the current runner OS.
         run: npm install
 
       - name: Build (OpenNext for Cloudflare)
