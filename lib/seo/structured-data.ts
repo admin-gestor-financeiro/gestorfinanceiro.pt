@@ -8,7 +8,9 @@ const SITE_NAME = "Gestor Financeiro";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type WithContext<T> = T & { "@context": "https://schema.org" };
+type WithContext<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+  "@context": "https://schema.org";
+};
 
 type BreadcrumbItem = {
   name: string;
@@ -33,7 +35,7 @@ type CalculatorStructuredDataArgs = {
 
 export function buildWebApplicationSchema(
   args: Pick<CalculatorStructuredDataArgs, "name" | "description" | "url">
-): WithContext<object> {
+): WithContext {
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -58,7 +60,7 @@ export function buildWebApplicationSchema(
 
 export function buildBreadcrumbSchema(
   items: BreadcrumbItem[]
-): WithContext<object> {
+): WithContext {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -71,7 +73,7 @@ export function buildBreadcrumbSchema(
   };
 }
 
-export function buildFaqSchema(items: FaqItem[]): WithContext<object> {
+export function buildFaqSchema(items: FaqItem[]): WithContext {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -86,7 +88,7 @@ export function buildFaqSchema(items: FaqItem[]): WithContext<object> {
   };
 }
 
-export function buildOrganizationSchema(): WithContext<object> {
+export function buildOrganizationSchema(): WithContext {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
