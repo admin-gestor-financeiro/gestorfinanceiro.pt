@@ -31,6 +31,7 @@ import { PillToggle } from "@/components/ui/pill-toggle";
 import { Collapsible } from "@/components/ui/collapsible";
 import { FloatingBar } from "@/components/ui/floating-bar";
 import { SalaryPayslip } from "@/components/calculators/salary-payslip";
+import { SalaryDiff } from "@/components/calculators/salary-diff";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -573,6 +574,13 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
                 {panelB.inner}
               </div>
             </div>
+
+            {/* Differential — full-width row below both panels */}
+            <SalaryDiff
+              resultA={panelA.result}
+              resultB={panelB.result}
+              locale={locale}
+            />
 
           </div>
         )}
