@@ -135,7 +135,7 @@ const PT: PayslipStrings = {
     "Método 2025: Escalões anuais Art. 68.º CIRS aplicados ao rendimento anual equivalente (Bruto × 12).",
   irsJovemBadge: (rate) => `IRS Jovem: ${rate} isento`,
   disabilityFallbackNote:
-    "Tabelas de deficiência não disponíveis para o Continente — tabela padrão aplicada.",
+    "Tabelas de incapacidade não disponíveis para o Continente — tabela padrão aplicada.",
   disclaimer: (year) =>
     `Cálculo baseado nas tabelas de retenção na fonte IRS ${year} publicadas pela AT. Verifique sempre com as tabelas oficiais.`,
   emptyState: "Introduza o salário bruto para ver o recibo.",

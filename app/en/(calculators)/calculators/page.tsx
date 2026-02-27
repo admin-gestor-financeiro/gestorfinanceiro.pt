@@ -58,6 +58,14 @@ const CALCULATORS = [
       "Calculate your Portuguese net take-home pay from gross salary. Includes IRS 2026 withholding and Social Security for Continental Portugal, Madeira and Azores.",
     badge: "Updated 2026",
   },
+  {
+    href: "/en/calculators/imt-simulator",
+    emoji: "🏠",
+    title: "IMT & Stamp Duty Simulator",
+    description:
+      "Calculate IMT (Property Transfer Tax) and Stamp Duty when buying property in Portugal. Covers primary residence, secondary home and other urban property.",
+    badge: null,
+  },
 ];
 
 export default function CalculatorsPage() {

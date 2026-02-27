@@ -48,6 +48,13 @@ const CALCULATORS = [
     description:
       "Calcule o seu salário líquido a partir do bruto. Inclui IRS 2026 e Segurança Social para Portugal Continental, Madeira e Açores.",
   },
+  {
+    href: "/calculadoras/simulador-imt",
+    emoji: "🏠",
+    title: "Simulador de IMT e Imposto de Selo",
+    description:
+      "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Inclui IMT Jovem e tabelas 2025 para Continente e Regiões Autónomas.",
+  },
 ];
 
 export default function HomePage() {

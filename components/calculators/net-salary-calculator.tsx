@@ -102,7 +102,7 @@ const PT: Strings = {
   grossPeriodAnnual: "Anual",
   maritalStatus: "Estado Civil",
   dependents: "Número de Dependentes",
-  disability: "Pessoa com deficiência",
+  disability: "Pessoa com incapacidade",
   disabilityHint: "Grau de incapacidade permanente ≥ 60%",
   mealAllowance: "Subsídio de Alimentação",
   mealAllowanceDaily: "Valor diário (€/dia)",
