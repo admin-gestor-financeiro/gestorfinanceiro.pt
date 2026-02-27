@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,3 +33,46 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Notify Discord
+        if: success()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_PROD_RELEASE_WEBHOOK_URL }}
+        run: |
+          COMMIT_SHA="${{ github.sha }}"
+          SHORT_SHA="${COMMIT_SHA:0:7}"
+          AUTHOR="${{ github.actor }}"
+          BRANCH="${{ github.ref_name }}"
+          REPO="${{ github.repository }}"
+          COMMIT_URL="https://github.com/${REPO}/commit/${COMMIT_SHA}"
+          RUN_URL="https://github.com/${REPO}/actions/runs/${{ github.run_id }}"
+
+          # Collect commit messages from this push (up to 10), formatted for Discord
+          COMMITS=$(git log ${{ github.event.before }}..${{ github.sha }} \
+            --pretty=format:"**\`%h\`** %s — *%an*" | head -10)
+          if [ -z "$COMMITS" ]; then
+            COMMITS="**\`${SHORT_SHA}\`** ${{ github.event.head_commit.message }} — *${AUTHOR}*"
+          fi
+
+          # Escape for JSON
+          COMMITS_ESCAPED=$(echo "$COMMITS" | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))")
+
+          curl -s -X POST "$DISCORD_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"embeds\": [{
+                \"title\": \"✅  Deploy · production concluído\",
+                \"url\": \"${RUN_URL}\",
+                \"description\": ${COMMITS_ESCAPED},
+                \"color\": 16750848,
+                \"fields\": [
+                  { \"name\": \"🌿  Branch\",  \"value\": \"\`${BRANCH}\`\",                        \"inline\": true },
+                  { \"name\": \"👤  Autor\",   \"value\": \"\`${AUTHOR}\`\",                        \"inline\": true },
+                  { \"name\": \"🔗  Commit\",  \"value\": \"[\`${SHORT_SHA}\`](${COMMIT_URL})\",    \"inline\": true }
+                ],
+                \"footer\": {
+                  \"text\": \"gestorfinanceiro.pt  ·  production\"
+                },
+                \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+              }]
+            }"

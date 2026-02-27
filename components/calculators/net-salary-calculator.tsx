@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { Share2, Check, GitCompareArrows, X } from "lucide-react";
+import { Briefcase, Check, GitCompareArrows, LayoutList, Share2 } from "lucide-react";
 import {
   calculateNetSalary,
   TAX_YEARS,
@@ -24,7 +24,12 @@ import {
   type SalaryFormState,
   type GrossPeriod,
 } from "@/lib/hooks/use-salary-params";
-import { formatCurrency } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
+import {
+  calculateJobDeductions,
+  DEFAULT_JOB_COSTS,
+  type JobCosts,
+} from "@/lib/calculators/job-costs";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -32,6 +37,7 @@ import { PillToggle } from "@/components/ui/pill-toggle";
 import { Collapsible } from "@/components/ui/collapsible";
 import { FloatingBar } from "@/components/ui/floating-bar";
 import { SalaryPayslip } from "@/components/calculators/salary-payslip";
+import { JobCostsPanel } from "@/components/calculators/job-costs-panel";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -64,10 +70,15 @@ type Strings = {
   netSalaryFloating: string;
   shareLabel: string;
   shareCopied: string;
+  singleLabel: string;
   compareLabel: string;
   exitCompare: string;
   scenarioA: string;
   scenarioB: string;
+  newJobLabel: string;
+  currentJobLabel: string;
+  newJobPanelLabel: string;
+  newJobDiff: string;
   maritalOptions: { value: MaritalStatus; label: string }[];
   dependentOptions: { value: string; label: string }[];
   mealTypeOptions: { value: MealAllowanceType; label: string }[];
@@ -105,10 +116,15 @@ const PT: Strings = {
   netSalaryFloating: "Salário líquido",
   shareLabel: "Partilhar",
   shareCopied: "Link copiado!",
-  compareLabel: "Comparar cenários",
+  singleLabel: "Simples",
+  compareLabel: "Comparar",
   exitCompare: "Sair da comparação",
   scenarioA: "Cenário A",
   scenarioB: "Cenário B",
+  newJobLabel: "Novo Emprego",
+  currentJobLabel: "Emprego Atual",
+  newJobPanelLabel: "Novo Emprego",
+  newJobDiff: "diferença mensal",
   maritalOptions: [
     { value: "single",         label: "Solteiro/a, Divorciado/a ou Viúvo/a" },
     { value: "married_single", label: "Casado/a — Único Titular"             },
@@ -155,10 +171,15 @@ const EN: Strings = {
   netSalaryFloating: "Net salary",
   shareLabel: "Share",
   shareCopied: "Link copied!",
-  compareLabel: "Compare scenarios",
+  singleLabel: "Single",
+  compareLabel: "Compare",
   exitCompare: "Exit comparison",
   scenarioA: "Scenario A",
   scenarioB: "Scenario B",
+  newJobLabel: "New Job",
+  currentJobLabel: "Current Job",
+  newJobPanelLabel: "New Job",
+  newJobDiff: "monthly difference",
   maritalOptions: [
     { value: "single",         label: "Single, Divorced or Widowed" },
     { value: "married_single", label: "Married — Single Earner"     },
@@ -486,62 +507,94 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
   // ── Scenario A — URL + localStorage sync ──
   const [stateA, setStateA] = useSalaryParams();
 
-  // ── Scenario B — local state only; initialised from A when compare activates ──
+  // ── Scenario B — local state only; initialised from A when a dual mode activates ──
   const [stateB, setStateB] = useState<SalaryFormState>(DEFAULT_SALARY_STATE);
 
-  // ── Compare mode state ──
-  const [compareMode, setCompareMode] = useState(false);
-  const [activeTab, setActiveTab]     = useState<"a" | "b">("a");
-  // Shared period for both payslips in compare mode so toggling one syncs the other.
+  // ── Mode: single | compare | new_job ──
+  const [mode, setMode] = useState<"single" | "compare" | "new_job">("single");
+  const [activeTab, setActiveTab] = useState<"a" | "b">("a");
+  // Shared period for both payslips in compare/new-job mode so toggling one syncs the other.
   const [comparePeriod, setComparePeriod] = useState<import("@/components/calculators/salary-payslip").Period>("monthly");
+
+  // ── Job costs state for new job mode ──
+  const [jobCostsA, setJobCostsA] = useState<JobCosts>(DEFAULT_JOB_COSTS);
+  const [jobCostsB, setJobCostsB] = useState<JobCosts>(DEFAULT_JOB_COSTS);
 
   const resultsRefA = useRef<HTMLDivElement | null>(null);
   const resultsRefB = useRef<HTMLDivElement | null>(null);
 
-  function activateCompare() {
-    setStateB({ ...stateA }); // Pre-fill B from current A
+  function handleModeChange(newMode: "single" | "compare" | "new_job") {
+    if (newMode !== "single" && mode === "single") {
+      setStateB({ ...stateA }); // Pre-fill B from current A on first activation
+    }
     setActiveTab("a");
-    setCompareMode(true);
+    setMode(newMode);
   }
 
-  function exitCompare() {
-    setCompareMode(false);
-    setActiveTab("a");
-  }
+  // ── Scenario panel props vary by mode ──
+  const isDualMode = mode !== "single";
 
-  // Render each scenario panel
   const panelA = ScenarioPanel({
     state: stateA,
     setState: setStateA,
     locale,
-    scenarioLabel: compareMode ? t.scenarioA : undefined,
-    headerActions: !compareMode
-      ? <ShareButton label={t.shareLabel} copiedLabel={t.shareCopied} />
-      : undefined,
+    scenarioLabel:
+      mode === "compare"
+        ? t.scenarioA
+        : mode === "new_job"
+          ? t.currentJobLabel
+          : undefined,
+    headerActions:
+      mode === "single" ? (
+        <ShareButton label={t.shareLabel} copiedLabel={t.shareCopied} />
+      ) : undefined,
     resultsRef: resultsRefA,
-    stacked: compareMode,
-    period: compareMode ? comparePeriod : undefined,
-    onPeriodChange: compareMode ? setComparePeriod : undefined,
-    // null (not undefined) signals "in compare mode, no delta baseline" so
-    // the payslip reserves space for delta elements and keeps height in sync with B.
-    comparisonResult: compareMode ? null : undefined,
+    stacked: isDualMode,
+    period: isDualMode ? comparePeriod : undefined,
+    onPeriodChange: isDualMode ? setComparePeriod : undefined,
+    // null signals "in compare mode, panel A — reserve delta space but show no deltas"
+    comparisonResult: mode === "compare" ? null : undefined,
   });
 
   const panelB = ScenarioPanel({
     state: stateB,
     setState: setStateB,
     locale,
-    scenarioLabel: t.scenarioB,
+    scenarioLabel:
+      mode === "compare" ? t.scenarioB : t.newJobPanelLabel,
     resultsRef: resultsRefB,
     stacked: true,
-    comparisonResult: panelA.result,
+    // Show delta chips only in compare mode, not new job mode
+    comparisonResult: mode === "compare" ? panelA.result : undefined,
     period: comparePeriod,
     onPeriodChange: setComparePeriod,
   });
 
-  const tabOptions = [
-    { value: "a", label: t.scenarioA },
-    { value: "b", label: t.scenarioB },
+  const tabOptions =
+    mode === "new_job"
+      ? [
+          { value: "a", label: t.currentJobLabel },
+          { value: "b", label: t.newJobPanelLabel },
+        ]
+      : [
+          { value: "a", label: t.scenarioA },
+          { value: "b", label: t.scenarioB },
+        ];
+
+  // ── Job cost deductions (new job mode) ──
+  const deductionsA =
+    mode === "new_job" && panelA.result
+      ? calculateJobDeductions(panelA.result.netSalary, jobCostsA)
+      : null;
+  const deductionsB =
+    mode === "new_job" && panelB.result
+      ? calculateJobDeductions(panelB.result.netSalary, jobCostsB)
+      : null;
+
+  const modeOptions = [
+    { id: "single" as const, label: t.singleLabel, Icon: LayoutList },
+    { id: "compare" as const, label: t.compareLabel, Icon: GitCompareArrows },
+    { id: "new_job" as const, label: t.newJobLabel, Icon: Briefcase },
   ];
 
   return (
@@ -555,32 +608,100 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
             <p className="mt-2 text-sm text-neutral-500 sm:text-base">{t.subtitle(stateA.year)}</p>
           </div>
 
-          {/* Compare / Exit button */}
-          {compareMode ? (
-            <button
-              onClick={exitCompare}
-              className="flex shrink-0 items-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-600 shadow-sm transition-colors hover:bg-neutral-50 hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            >
-              <X className="h-4 w-4" />
-              {t.exitCompare}
-            </button>
-          ) : (
-            <button
-              onClick={activateCompare}
-              className="flex shrink-0 items-center gap-2 rounded-lg border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            >
-              <GitCompareArrows className="h-4 w-4" />
-              {t.compareLabel}
-            </button>
-          )}
+          {/* Mode switcher */}
+          <div className="flex overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 shrink-0">
+            {modeOptions.map(({ id, label, Icon }, idx) => (
+              <button
+                key={id}
+                onClick={() => handleModeChange(id)}
+                className={cn(
+                  "flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500",
+                  idx > 0 && "border-l border-neutral-200",
+                  mode === id
+                    ? "bg-white text-primary-700 shadow-sm"
+                    : "text-neutral-500 hover:bg-white/70 hover:text-neutral-700",
+                )}
+              >
+                <Icon className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">{label}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* ── Single mode ── */}
-        {!compareMode && panelA.inner}
+        {mode === "single" && panelA.inner}
 
         {/* ── Compare mode ── */}
-        {compareMode && (
+        {mode === "compare" && (
           <div className="space-y-4">
+            {/* Mobile tab switcher */}
+            <div className="lg:hidden">
+              <PillToggle
+                options={tabOptions}
+                value={activeTab}
+                onChange={(v) => setActiveTab(v as "a" | "b")}
+                className="w-full"
+              />
+            </div>
+            {/* Two-column grid — desktop shows both; mobile shows only active tab */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className={activeTab === "a" ? undefined : "hidden lg:block"}>
+                {panelA.inner}
+              </div>
+              <div className={activeTab === "b" ? undefined : "hidden lg:block"}>
+                {panelB.inner}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── New job mode ── */}
+        {mode === "new_job" && (
+          <div className="space-y-4">
+
+            {/* Comparison summary banner */}
+            {deductionsA && deductionsB && (
+              <Card className="border-primary-200 bg-primary-50">
+                <CardBody className="flex items-center justify-around gap-4 py-4">
+                  <div className="text-center">
+                    <p className="text-xs font-medium text-neutral-500">{t.currentJobLabel}</p>
+                    <p className="mt-0.5 text-2xl font-bold tabular-nums text-neutral-900">
+                      {formatCurrency(deductionsA.adjustedNetSalary)}
+                    </p>
+                    <p className="text-xs text-neutral-400">{formatCurrency(deductionsA.adjustedHourlyRate)}/h</p>
+                  </div>
+                  <div className="text-center">
+                    {(() => {
+                      const diff = deductionsB.adjustedNetSalary - deductionsA.adjustedNetSalary;
+                      const isPositive = diff > 0.005;
+                      const isNegative = diff < -0.005;
+                      return (
+                        <>
+                          <p className={cn(
+                            "text-xl font-bold tabular-nums",
+                            isPositive && "text-success-600",
+                            isNegative && "text-error-600",
+                            !isPositive && !isNegative && "text-neutral-400",
+                          )}>
+                            {isPositive ? "+" : isNegative ? "−" : ""}
+                            {formatCurrency(Math.abs(diff))}
+                          </p>
+                          <p className="text-xs text-neutral-400">{t.newJobDiff}</p>
+                        </>
+                      );
+                    })()}
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs font-medium text-neutral-500">{t.newJobPanelLabel}</p>
+                    <p className="mt-0.5 text-2xl font-bold tabular-nums text-neutral-900">
+                      {formatCurrency(deductionsB.adjustedNetSalary)}
+                    </p>
+                    <p className="text-xs text-neutral-400">{formatCurrency(deductionsB.adjustedHourlyRate)}/h</p>
+                  </div>
+                </CardBody>
+              </Card>
+            )}
 
             {/* Mobile tab switcher */}
             <div className="lg:hidden">
@@ -592,13 +713,29 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
               />
             </div>
 
-            {/* Two-column grid — desktop shows both; mobile shows only active tab */}
+            {/* Two-column grid */}
             <div className="grid gap-6 lg:grid-cols-2">
               <div className={activeTab === "a" ? undefined : "hidden lg:block"}>
-                {panelA.inner}
+                <div className="space-y-4">
+                  {panelA.inner}
+                  <JobCostsPanel
+                    costs={jobCostsA}
+                    setCosts={setJobCostsA}
+                    locale={locale}
+                    netSalary={panelA.result?.netSalary ?? null}
+                  />
+                </div>
               </div>
               <div className={activeTab === "b" ? undefined : "hidden lg:block"}>
-                {panelB.inner}
+                <div className="space-y-4">
+                  {panelB.inner}
+                  <JobCostsPanel
+                    costs={jobCostsB}
+                    setCosts={setJobCostsB}
+                    locale={locale}
+                    netSalary={panelB.result?.netSalary ?? null}
+                  />
+                </div>
               </div>
             </div>
 
@@ -607,8 +744,8 @@ export function NetSalaryCalculator({ locale = "pt" }: Props) {
 
       </div>
 
-      {/* Mobile floating bar — single mode only (compare mode uses tabs so user sees the payslip) */}
-      {!compareMode && (
+      {/* Mobile floating bar — single mode only (dual modes use tabs so user sees the payslip) */}
+      {mode === "single" && (
         <>
           <FloatingBar
             label={t.netSalaryFloating}

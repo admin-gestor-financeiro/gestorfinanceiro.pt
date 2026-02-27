@@ -403,20 +403,25 @@ export function calculateNetSalary(input: NetSalaryInput): NetSalaryResult {
   let debugInfo: DebugInfo;
 
   if (year === 2026) {
-    // IRS on base salary component
+    // Step 1: IRS on base salary via normal table lookup (duodécimos not yet involved)
     const { irs: irsBase, debug } = computeAtTableIrs(
       grossSalary, maritalStatus, dependentsCount,
       region, disability, "none", irsJovem, year
     );
-    // IRS on duodécimos component (treated as independent income, no dependents parcel)
-    const { irs: irsDuodecimos } = duodecimosMonthlyAmount > 0
-      ? computeAtTableIrs(duodecimosMonthlyAmount, maritalStatus, 0, region, disability, "none", undefined, year)
-      : { irs: 0 };
+
+    // Step 2: IRS on duodécimos fraction — AT rule: apply the same effective rate as the
+    // base salary (net of parcel and dependent parcels), NOT a separate table lookup.
+    // Rationale: the fractional subsidy does not trigger a higher bracket; it is taxed at
+    // the rate already established by the base salary. Dr. Finanças uses the same formula.
+    let irsDuodecimos = 0;
+    if (duodecimosMonthlyAmount > 0 && grossSalary > 0) {
+      const effectiveRate = irsBase / grossSalary;
+      irsDuodecimos = Math.round(duodecimosMonthlyAmount * effectiveRate * 100) / 100;
+    }
 
     irsWithholding = Math.round((irsBase + irsDuodecimos) * 100) / 100;
     debugInfo = {
       ...debug,
-      // Preserve duodecimosBase in debug so the payslip formula section still works
       duodecimosBase: effectiveMonthlyGross,
     };
   } else {

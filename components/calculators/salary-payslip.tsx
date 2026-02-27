@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Info } from "lucide-react";
+import { ChevronDown, Info } from "lucide-react";
 import { Card, CardBody, CardHeader, CardFooter } from "@/components/ui/card";
 import { Collapsible } from "@/components/ui/collapsible";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -346,6 +346,7 @@ export function SalaryPayslip({
 }: Props) {
   const t = locale === "en" ? EN : PT;
   const [periodInternal, setPeriodInternal] = useState<Period>("monthly");
+  const [showEmployerCost, setShowEmployerCost] = useState(false);
 
   // Use controlled period when provided, otherwise fall back to internal state.
   const period = periodProp ?? periodInternal;
@@ -602,36 +603,48 @@ export function SalaryPayslip({
         </CardBody>
       </Card>
 
-      {/* ── Employer cost ── */}
+      {/* ── Employer cost (collapsed by default) ── */}
       <Card>
-        <CardHeader>
+        <button
+          type="button"
+          onClick={() => setShowEmployerCost((v) => !v)}
+          className="flex w-full items-center justify-between rounded-xl px-6 py-4 text-left transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+        >
           <h2 className="font-semibold text-neutral-900">{t.employerTitle}</h2>
-        </CardHeader>
-        <CardBody>
-          <table className="w-full">
-            <tbody>
-              <PayslipRow
-                label={t.employerGrossLabel}
-                value={fmt(result.effectiveMonthlyGross)}
-              />
-              <PayslipRow
-                label={t.employerSSLabel}
-                value={`+ ${fmt(result.employerSocialSecurity)}`}
-                tooltip={t.employerSSTooltip}
-                isNegative
-              />
-              <PayslipRow isSeparator label="" />
-              <PayslipRow
-                label={t.employerTotalLabel}
-                value={fmt(result.totalEmployerCost)}
-                isTotal
-                delta={d?.employer}
-                deltaHigherIsBetter={false}
-                reserveDeltaSpace={inCompareMode}
-              />
-            </tbody>
-          </table>
-        </CardBody>
+          <ChevronDown
+            className={cn(
+              "h-4 w-4 text-neutral-400 transition-transform duration-200",
+              showEmployerCost && "rotate-180",
+            )}
+          />
+        </button>
+        {showEmployerCost && (
+          <div className="px-6 pb-4">
+            <table className="w-full">
+              <tbody>
+                <PayslipRow
+                  label={t.employerGrossLabel}
+                  value={fmt(result.effectiveMonthlyGross)}
+                />
+                <PayslipRow
+                  label={t.employerSSLabel}
+                  value={`+ ${fmt(result.employerSocialSecurity)}`}
+                  tooltip={t.employerSSTooltip}
+                  isNegative
+                />
+                <PayslipRow isSeparator label="" />
+                <PayslipRow
+                  label={t.employerTotalLabel}
+                  value={fmt(result.totalEmployerCost)}
+                  isTotal
+                  delta={d?.employer}
+                  deltaHigherIsBetter={false}
+                  reserveDeltaSpace={inCompareMode}
+                />
+              </tbody>
+            </table>
+          </div>
+        )}
       </Card>
 
       {/* ── How it's calculated ── */}
