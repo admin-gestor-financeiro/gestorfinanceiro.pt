@@ -1,0 +1,54 @@
+{
+  "name": "gestorfinanceiro",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "opennextjs-cloudflare build",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:prod": "wrangler d1 migrations apply DB --remote",
+    "db:studio": "drizzle-kit studio",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@aws-sdk/s3-request-presigner": "^3.600.0",
+    "@opennextjs/cloudflare": "^1.0.0",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "^0.41.0",
+    "lucide-react": "^0.460.0",
+    "next": "^15.2.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.5.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "drizzle-kit": "^0.30.0",
+    "eslint": "^9",
+    "eslint-config-next": "^15.2.4",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5",
+    "vitest": "^4.0.18",
+    "wrangler": "^4.0.0"
+  },
+  "optionalDependencies": {
+    "lightningcss-darwin-arm64": "1.31.1",
+    "lightningcss-darwin-x64": "1.31.1",
+    "lightningcss-linux-arm64-gnu": "1.31.1",
+    "lightningcss-linux-x64-gnu": "1.31.1",
+    "lightningcss-win32-arm64-msvc": "1.31.1",
+    "lightningcss-win32-x64-msvc": "1.31.1"
+  }
+}

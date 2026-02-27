@@ -1,0 +1,748 @@
+{
+  "description": "2026 net salary test cases extracted from salary_simulator_2026_all_scenarios.csv. Source: AT monthly withholding tables methodology. Continente, no disability, no twelfths, no meal allowance.",
+  "source_file": "salary_simulator_2026_all_scenarios.csv",
+  "cases": [
+    {
+      "year": 2026,
+      "grossSalary": 820.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 729.8,
+        "socialSecurity": 90.2,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 854.17,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 760.21,
+        "socialSecurity": 93.96,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 10000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 5229.0,
+        "socialSecurity": 1100.0,
+        "irsWithholding": 3672.0,
+        "irsRetentionRatePct": 36.72
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 876.0,
+        "socialSecurity": 110.0,
+        "irsWithholding": 14.6,
+        "irsRetentionRatePct": 1.46
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1189.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 146.7,
+        "irsRetentionRatePct": 9.78
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1501.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 280.0,
+        "irsRetentionRatePct": 14.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 3000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 2029.0,
+        "socialSecurity": 330.0,
+        "irsWithholding": 641.7,
+        "irsRetentionRatePct": 21.39
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 5000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 3019.0,
+        "socialSecurity": 550.0,
+        "irsWithholding": 1431.5,
+        "irsRetentionRatePct": 28.63
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 5833.33,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 3899.67,
+        "socialSecurity": 641.67,
+        "irsWithholding": 1292.67,
+        "irsRetentionRatePct": 22.16
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 11666.67,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 6572.33,
+        "socialSecurity": 1283.33,
+        "irsWithholding": 3811.5,
+        "irsRetentionRatePct": 32.67
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1210.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 125.25,
+        "irsRetentionRatePct": 8.35
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1522.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 258.4,
+        "irsRetentionRatePct": 12.92
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 3000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 2050.0,
+        "socialSecurity": 330.0,
+        "irsWithholding": 620.4,
+        "irsRetentionRatePct": 20.68
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 10000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 5272.0,
+        "socialSecurity": 1100.0,
+        "irsWithholding": 3629.0,
+        "irsRetentionRatePct": 36.29
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 11666.67,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 6174.33,
+        "socialSecurity": 1283.33,
+        "irsWithholding": 4209.33,
+        "irsRetentionRatePct": 36.08
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 820.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 729.8,
+        "socialSecurity": 90.2,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1247.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 88.95,
+        "irsRetentionRatePct": 5.93
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1563.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 217.0,
+        "irsRetentionRatePct": 10.85
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 3000.0,
+      "maritalStatus": "married_dual",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 2102.0,
+        "socialSecurity": 330.0,
+        "irsWithholding": 568.8,
+        "irsRetentionRatePct": 18.96
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 886.0,
+        "socialSecurity": 110.0,
+        "irsWithholding": 4.1,
+        "irsRetentionRatePct": 0.41
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1606.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 174.0,
+        "irsRetentionRatePct": 8.7
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 5000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 3486.0,
+        "socialSecurity": 550.0,
+        "irsWithholding": 964.5,
+        "irsRetentionRatePct": 19.29
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 11666.67,
+      "maritalStatus": "married_single",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 7069.33,
+        "socialSecurity": 1283.33,
+        "irsWithholding": 3314.5,
+        "irsRetentionRatePct": 28.41
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 820.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 729.8,
+        "socialSecurity": 90.2,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 890.0,
+        "socialSecurity": 110.0,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1649.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 131.2,
+        "irsRetentionRatePct": 6.56
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 3000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 2313.0,
+        "socialSecurity": 330.0,
+        "irsWithholding": 357.3,
+        "irsRetentionRatePct": 11.91
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 820.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 729.8,
+        "socialSecurity": 90.2,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 890.0,
+        "socialSecurity": 110.0,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1327.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 8.4,
+        "irsRetentionRatePct": 0.56
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1692.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 88.4,
+        "irsRetentionRatePct": 4.42
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 3000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 2356.0,
+        "socialSecurity": 330.0,
+        "irsWithholding": 314.7,
+        "irsRetentionRatePct": 10.49
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 5000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 3572.0,
+        "socialSecurity": 550.0,
+        "irsWithholding": 878.5,
+        "irsRetentionRatePct": 17.57
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 11666.67,
+      "maritalStatus": "married_single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 7518.33,
+        "socialSecurity": 1283.33,
+        "irsWithholding": 2865.33,
+        "irsRetentionRatePct": 24.56
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 820.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 729.8,
+        "socialSecurity": 90.2,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 890.0,
+        "socialSecurity": 110.0,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1335.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1755.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 25.4,
+        "irsRetentionRatePct": 1.27
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 5000.0,
+      "maritalStatus": "married_single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 3665.0,
+        "socialSecurity": 550.0,
+        "irsWithholding": 786.0,
+        "irsRetentionRatePct": 15.72
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 5833.33,
+      "maritalStatus": "married_single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 4583.67,
+        "socialSecurity": 641.67,
+        "irsWithholding": 607.83,
+        "irsRetentionRatePct": 10.42
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 820.0,
+      "maritalStatus": "single",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 729.8,
+        "socialSecurity": 90.2,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "single",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1167.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 168.15,
+        "irsRetentionRatePct": 11.21
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "single",
+      "dependentsCount": 0,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1479.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 301.4,
+        "irsRetentionRatePct": 15.07
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "single",
+      "dependentsCount": 1,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1202.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 133.95,
+        "irsRetentionRatePct": 8.93
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 820.0,
+      "maritalStatus": "single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 729.8,
+        "socialSecurity": 90.2,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1000.0,
+      "maritalStatus": "single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 890.0,
+        "socialSecurity": 110.0,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 2000.0,
+      "maritalStatus": "single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1548.0,
+        "socialSecurity": 220.0,
+        "irsWithholding": 232.8,
+        "irsRetentionRatePct": 11.64
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 3500.0,
+      "maritalStatus": "single",
+      "dependentsCount": 2,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 2887.0,
+        "socialSecurity": 385.0,
+        "irsWithholding": 228.55,
+        "irsRetentionRatePct": 6.53
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 956.67,
+      "maritalStatus": "single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 851.43,
+        "socialSecurity": 105.23,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1000.0,
+      "maritalStatus": "single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 890.0,
+        "socialSecurity": 110.0,
+        "irsWithholding": 0.0,
+        "irsRetentionRatePct": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 1500.0,
+      "maritalStatus": "single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 1285.0,
+        "socialSecurity": 165.0,
+        "irsWithholding": 50.25,
+        "irsRetentionRatePct": 3.35
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 5000.0,
+      "maritalStatus": "single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 3150.0,
+        "socialSecurity": 550.0,
+        "irsWithholding": 1300.0,
+        "irsRetentionRatePct": 26.0
+      }
+    },
+    {
+      "year": 2026,
+      "grossSalary": 11666.67,
+      "maritalStatus": "single",
+      "dependentsCount": 3,
+      "mealAllowanceType": "none",
+      "mealAllowanceDaily": 0,
+      "expected": {
+        "netSalary": 6903.33,
+        "socialSecurity": 1283.33,
+        "irsWithholding": 3481.33,
+        "irsRetentionRatePct": 29.84
+      }
+    }
+  ]
+}
