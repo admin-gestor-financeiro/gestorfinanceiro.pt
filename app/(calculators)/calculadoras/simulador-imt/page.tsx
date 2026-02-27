@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ImtCalculator } from "@/components/calculators/imt-calculator";
 import { JsonLd } from "@/components/ui/json-ld";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   buildWebApplicationSchema,
   buildBreadcrumbSchema,
@@ -10,9 +11,9 @@ import {
 const PAGE_URL = "https://gestorfinanceiro.pt/calculadoras/simulador-imt";
 
 export const metadata: Metadata = {
-  title: "Simulador de IMT e Imposto de Selo 2024 — Portugal",
+  title: "Simulador de IMT e Imposto de Selo 2026 — Portugal",
   description:
-    "Calcule o IMT (Imposto Municipal sobre Transmissões) e Imposto de Selo na compra de imóvel em Portugal. Tabelas atualizadas para habitação própria permanente, secundária e outros imóveis.",
+    "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Tabelas 2026 para habitação própria permanente, secundária e outros imóveis. Inclui IMT Jovem para compradores com ≤ 35 anos.",
   alternates: {
     canonical: "/calculadoras/simulador-imt",
     languages: {
@@ -21,26 +22,26 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Simulador de IMT e Imposto de Selo — Portugal",
+    title: "Simulador de IMT e Imposto de Selo 2026 — Portugal",
     description:
-      "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Gratuito e atualizado.",
+      "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Gratuito, atualizado para 2026. Inclui IMT Jovem.",
     url: PAGE_URL,
     locale: "pt_PT",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Simulador de IMT e Imposto de Selo — Portugal",
+    title: "Simulador de IMT e Imposto de Selo 2026 — Portugal",
     description:
-      "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Gratuito e atualizado.",
+      "Calcule o IMT e Imposto de Selo na compra de imóvel em Portugal. Gratuito, atualizado para 2026. Inclui IMT Jovem.",
   },
 };
 
 const structuredData = buildGraphSchema([
   buildWebApplicationSchema({
-    name: "Simulador de IMT e Imposto de Selo",
+    name: "Simulador de IMT e Imposto de Selo 2026",
     description:
-      "Simulador gratuito de IMT e Imposto de Selo para Portugal. Calcula os impostos de aquisição de imóvel com base no tipo de imóvel e região.",
+      "Simulador gratuito de IMT e Imposto de Selo para Portugal. Tabelas 2026 com suporte a IMT Jovem (isenção para compradores com ≤ 35 anos), modo de comparação entre imóveis e detalhe por escalão.",
     url: PAGE_URL,
   }),
   buildBreadcrumbSchema([
@@ -54,6 +55,15 @@ export default function SimuladorImtPage() {
   return (
     <>
       <JsonLd schema={structuredData} />
+      <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6">
+        <Breadcrumb
+          items={[
+            { label: "Início", href: "/" },
+            { label: "Calculadoras", href: "/calculadoras" },
+            { label: "Simulador de IMT e Imposto de Selo" },
+          ]}
+        />
+      </div>
       <ImtCalculator locale="pt" />
     </>
   );

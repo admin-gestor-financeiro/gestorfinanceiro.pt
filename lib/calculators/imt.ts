@@ -142,7 +142,7 @@ const FLAT_RATE_OFFSHORE       = 0.10;
 export const IMPOSTO_SELO_RATE = 0.008;
 
 // IMT Jovem Imposto de Selo exemption ceiling (same as IMT full-exemption threshold)
-const IMT_JOVEM_IS_THRESHOLD: Record<ImtRegion, number> = {
+export const IMT_JOVEM_IS_THRESHOLD: Record<ImtRegion, number> = {
   continente:     330_539,
   acores_madeira: 413_174,
 };
