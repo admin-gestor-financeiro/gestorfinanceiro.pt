@@ -1,19 +1,59 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/ui/json-ld";
+import {
+  buildWebPageSchema,
+  buildBreadcrumbSchema,
+  buildGraphSchema,
+} from "@/lib/seo/structured-data";
+
+const PAGE_URL = "https://gestorfinanceiro.pt/sobre";
 
 export const metadata: Metadata = {
   title: "Sobre Nós — Gestor Financeiro",
   description:
-    "Conheça o Gestor Financeiro: calculadoras financeiras gratuitas e atualizadas para portugueses.",
+    "Conheça o Gestor Financeiro: calculadoras financeiras gratuitas e atualizadas em Portugal.",
   alternates: {
     canonical: "/sobre",
     languages: { "pt-PT": "/sobre", en: "/en/about" },
   },
+  openGraph: {
+    title: "Sobre Nós — Gestor Financeiro",
+    description:
+      "Conheça o Gestor Financeiro: calculadoras financeiras gratuitas e atualizadas em Portugal.",
+    url: PAGE_URL,
+    siteName: "Gestor Financeiro",
+    locale: "pt_PT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Sobre Nós — Gestor Financeiro",
+    description:
+      "Conheça o Gestor Financeiro: calculadoras financeiras gratuitas e atualizadas em Portugal.",
+  },
 };
+
+const structuredData = buildGraphSchema([
+  buildWebPageSchema({
+    type: "AboutPage",
+    name: "Sobre Nós — Gestor Financeiro",
+    description:
+      "Projeto independente que disponibiliza calculadoras financeiras gratuitas em Portugal, com foco na transparência fiscal e laboral.",
+    url: PAGE_URL,
+    inLanguage: "pt-PT",
+  }),
+  buildBreadcrumbSchema([
+    { name: "Início", url: "https://gestorfinanceiro.pt" },
+    { name: "Sobre nós", url: PAGE_URL },
+  ]),
+]);
 
 export default function SobrePage() {
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 py-14">
+      <JsonLd schema={structuredData} />
+
       <nav className="mb-6 flex items-center gap-2 text-sm text-neutral-400">
         <Link href="/" className="hover:text-neutral-600 transition-colors">
           Início
@@ -26,7 +66,7 @@ export default function SobrePage() {
 
       <div className="prose prose-neutral max-w-none space-y-5 text-neutral-600 leading-relaxed">
         <p>
-          O <strong className="text-neutral-800">Gestor Financeiro</strong> é um projeto independente que disponibiliza calculadoras financeiras gratuitas para portugueses. O nosso objetivo é tornar a informação fiscal e laboral mais acessível a todos.
+          O <strong className="text-neutral-800">Gestor Financeiro</strong> é um projeto independente que disponibiliza calculadoras financeiras gratuitas em Portugal. O nosso objetivo é tornar a informação fiscal e laboral mais acessível a todos.
         </p>
 
         <p>

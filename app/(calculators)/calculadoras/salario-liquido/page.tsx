@@ -11,9 +11,9 @@ import {
 const PAGE_URL = "https://gestorfinanceiro.pt/calculadoras/salario-liquido";
 
 export const metadata: Metadata = {
-  title: "Calculadora de Salário Líquido 2025 — Portugal",
+  title: "Calculadora de Salário Líquido 2026 — Portugal",
   description:
-    "Calcule o seu salário líquido a partir do salário bruto. Inclui descontos de Segurança Social (11%) e Retenção na Fonte IRS 2025 para Portugal Continental. Gratuito e atualizado.",
+    "Calcule o seu salário líquido a partir do salário bruto. Inclui descontos de Segurança Social (11%) e Retenção na Fonte IRS 2026 para Portugal Continental, Madeira e Açores. Gratuito e atualizado.",
   alternates: {
     canonical: "/calculadoras/salario-liquido",
     languages: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Calculadora de Salário Líquido 2025 — Portugal",
+    title: "Calculadora de Salário Líquido 2026 — Portugal",
     description:
       "Calcule o seu salário líquido em segundos. Inclui IRS, Segurança Social e subsídio de alimentação.",
     url: PAGE_URL,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Calculadora de Salário Líquido 2025 — Portugal",
+    title: "Calculadora de Salário Líquido 2026 — Portugal",
     description:
       "Calcule o seu salário líquido em segundos. Inclui IRS, Segurança Social e subsídio de alimentação.",
   },
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
 
 const structuredData = buildGraphSchema([
   buildWebApplicationSchema({
-    name: "Calculadora de Salário Líquido 2025",
+    name: "Calculadora de Salário Líquido 2026",
     description:
-      "Calculadora gratuita de salário líquido para Portugal. Calcula descontos de IRS e Segurança Social com base nos escalões de 2025.",
+      "Calculadora gratuita de salário líquido para Portugal. Calcula descontos de IRS e Segurança Social com base nos escalões de 2026.",
     url: PAGE_URL,
   }),
   buildBreadcrumbSchema([
@@ -56,9 +56,9 @@ const structuredData = buildGraphSchema([
         "O salário líquido obtém-se subtraindo ao salário bruto os descontos obrigatórios: Segurança Social (11% para o trabalhador) e a Retenção na Fonte de IRS (variável conforme escalão de rendimento, estado civil e número de dependentes).",
     },
     {
-      question: "Qual é a taxa de Segurança Social do trabalhador em 2025?",
+      question: "Qual é a taxa de Segurança Social do trabalhador em 2026?",
       answer:
-        "A taxa contributiva do trabalhador por conta de outrem para a Segurança Social é de 11% do salário bruto em 2025.",
+        "A taxa contributiva do trabalhador por conta de outrem para a Segurança Social é de 11% do salário bruto em 2026.",
     },
     {
       question: "O subsídio de alimentação é sujeito a IRS?",

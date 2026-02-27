@@ -1,15 +1,53 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/ui/json-ld";
+import {
+  buildWebPageSchema,
+  buildBreadcrumbSchema,
+  buildGraphSchema,
+} from "@/lib/seo/structured-data";
+
+const PAGE_URL = "https://gestorfinanceiro.pt/calculadoras";
 
 export const metadata: Metadata = {
   title: "Calculadoras Financeiras — Gestor Financeiro",
   description:
-    "Todas as calculadoras financeiras gratuitas para portugueses: salário líquido, IRS, Segurança Social e muito mais.",
+    "Todas as calculadoras financeiras gratuitas em Portugal: salário líquido, IRS, Segurança Social e muito mais.",
   alternates: {
     canonical: "/calculadoras",
     languages: { "pt-PT": "/calculadoras", en: "/en/calculators" },
   },
+  openGraph: {
+    title: "Calculadoras Financeiras — Gestor Financeiro",
+    description:
+      "Todas as calculadoras financeiras gratuitas em Portugal: salário líquido, IRS, Segurança Social e muito mais.",
+    url: PAGE_URL,
+    siteName: "Gestor Financeiro",
+    locale: "pt_PT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Calculadoras Financeiras — Gestor Financeiro",
+    description:
+      "Todas as calculadoras financeiras gratuitas em Portugal: salário líquido, IRS, Segurança Social e muito mais.",
+  },
 };
+
+const structuredData = buildGraphSchema([
+  buildWebPageSchema({
+    type: "CollectionPage",
+    name: "Calculadoras Financeiras",
+    description:
+      "Todas as calculadoras financeiras gratuitas do Gestor Financeiro: salário líquido, IRS, Segurança Social e muito mais.",
+    url: PAGE_URL,
+    inLanguage: "pt-PT",
+  }),
+  buildBreadcrumbSchema([
+    { name: "Início", url: "https://gestorfinanceiro.pt" },
+    { name: "Calculadoras", url: PAGE_URL },
+  ]),
+]);
 
 const CALCULATORS = [
   {
@@ -25,6 +63,8 @@ const CALCULATORS = [
 export default function CalculadorasPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+      <JsonLd schema={structuredData} />
+
       {/* Page header */}
       <div className="mb-10">
         <nav className="mb-4 flex items-center gap-2 text-sm text-neutral-400">

@@ -1,16 +1,44 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteLayout } from "@/components/ui/site-layout";
+import { JsonLd } from "@/components/ui/json-ld";
+import {
+  buildWebSiteSchema,
+  buildOrganizationSchema,
+  buildGraphSchema,
+} from "@/lib/seo/structured-data";
+
+const BASE_URL = "https://gestorfinanceiro.pt";
 
 export const metadata: Metadata = {
-  title: "Gestor Financeiro — Calculadoras Financeiras para Portugueses",
+  title: "Gestor Financeiro — Calculadoras Financeiras em Portugal",
   description:
-    "Ferramentas e calculadoras financeiras gratuitas para portugueses: simulador de salário líquido, IRS, Segurança Social e muito mais.",
+    "Ferramentas e calculadoras financeiras gratuitas em Portugal: simulador de salário líquido, IRS, Segurança Social e muito mais.",
   alternates: {
     canonical: "/",
     languages: { "pt-PT": "/", en: "/en" },
   },
+  openGraph: {
+    title: "Gestor Financeiro — Calculadoras Financeiras em Portugal",
+    description:
+      "Ferramentas e calculadoras financeiras gratuitas em Portugal: simulador de salário líquido, IRS, Segurança Social e muito mais.",
+    url: BASE_URL,
+    siteName: "Gestor Financeiro",
+    locale: "pt_PT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Gestor Financeiro — Calculadoras Financeiras em Portugal",
+    description:
+      "Ferramentas e calculadoras financeiras gratuitas em Portugal: simulador de salário líquido, IRS, Segurança Social e muito mais.",
+  },
 };
+
+const structuredData = buildGraphSchema([
+  buildWebSiteSchema(),
+  buildOrganizationSchema(),
+]);
 
 const CALCULATORS = [
   {
@@ -25,12 +53,14 @@ const CALCULATORS = [
 export default function HomePage() {
   return (
     <SiteLayout locale="pt">
+      <JsonLd schema={structuredData} />
+
       {/* Hero */}
       <section className="bg-gradient-to-b from-primary-50 to-white py-16 px-4 sm:px-6 text-center">
         <div className="mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
             Calculadoras financeiras{" "}
-            <span className="text-primary-600">para portugueses</span>
+            <span className="text-primary-600">em Portugal</span>
           </h1>
           <p className="mt-4 text-lg text-neutral-500">
             Ferramentas gratuitas e atualizadas para calcular o seu salário líquido, impostos e muito mais.

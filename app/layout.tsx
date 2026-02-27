@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Gestor Financeiro — Calculadoras Financeiras para Portugueses",
+    default: "Gestor Financeiro — Calculadoras Financeiras em Portugal",
     template: "%s | Gestor Financeiro",
   },
   description:
-    "Ferramentas e calculadoras financeiras gratuitas para ajudar portugueses a gerir as suas finanças pessoais.",
+    "Ferramentas e calculadoras financeiras gratuitas para gerir as suas finanças pessoais em Portugal.",
   metadataBase: new URL("https://gestorfinanceiro.pt"),
   alternates: {
     canonical: "/",

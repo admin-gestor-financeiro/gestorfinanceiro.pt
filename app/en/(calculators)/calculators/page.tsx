@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/ui/json-ld";
+import {
+  buildWebPageSchema,
+  buildBreadcrumbSchema,
+  buildGraphSchema,
+} from "@/lib/seo/structured-data";
+
+const PAGE_URL = "https://gestorfinanceiro.pt/en/calculators";
 
 export const metadata: Metadata = {
   title: "Financial Calculators — Gestor Financeiro",
@@ -9,7 +17,37 @@ export const metadata: Metadata = {
     canonical: "/en/calculators",
     languages: { en: "/en/calculators", "pt-PT": "/calculadoras" },
   },
+  openGraph: {
+    title: "Financial Calculators — Gestor Financeiro",
+    description:
+      "Free financial calculators for Portugal: net salary, IRS withholding, Social Security and more.",
+    url: PAGE_URL,
+    siteName: "Gestor Financeiro",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Financial Calculators — Gestor Financeiro",
+    description:
+      "Free financial calculators for Portugal: net salary, IRS withholding, Social Security and more.",
+  },
 };
+
+const structuredData = buildGraphSchema([
+  buildWebPageSchema({
+    type: "CollectionPage",
+    name: "Financial Calculators",
+    description:
+      "All free financial calculators from Gestor Financeiro: net salary, IRS withholding, Social Security and more.",
+    url: PAGE_URL,
+    inLanguage: "en",
+  }),
+  buildBreadcrumbSchema([
+    { name: "Home", url: "https://gestorfinanceiro.pt/en" },
+    { name: "Calculators", url: PAGE_URL },
+  ]),
+]);
 
 const CALCULATORS = [
   {
@@ -25,6 +63,8 @@ const CALCULATORS = [
 export default function CalculatorsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+      <JsonLd schema={structuredData} />
+
       {/* Page header */}
       <div className="mb-10">
         <nav className="mb-4 flex items-center gap-2 text-sm text-neutral-400">

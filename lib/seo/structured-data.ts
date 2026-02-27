@@ -95,8 +95,62 @@ export function buildOrganizationSchema(): WithContext {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Ferramentas e calculadoras financeiras gratuitas para portugueses.",
+      "Ferramentas e calculadoras financeiras gratuitas em Portugal.",
     inLanguage: ["pt-PT", "en"],
+  };
+}
+
+type WebPageType =
+  | "WebPage"
+  | "AboutPage"
+  | "ContactPage"
+  | "CollectionPage";
+
+type WebPageSchemaArgs = {
+  type: WebPageType;
+  name: string;
+  description: string;
+  url: string;
+  inLanguage?: string;
+};
+
+export function buildWebSiteSchema(): WithContext {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: "Ferramentas e calculadoras financeiras gratuitas em Portugal.",
+    inLanguage: ["pt-PT", "en"],
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/calculadoras`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function buildWebPageSchema(args: WebPageSchemaArgs): WithContext {
+  return {
+    "@context": "https://schema.org",
+    "@type": args.type,
+    name: args.name,
+    description: args.description,
+    url: args.url,
+    inLanguage: args.inLanguage ?? "pt-PT",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
   };
 }
 

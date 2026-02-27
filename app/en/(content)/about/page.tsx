@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/ui/json-ld";
+import {
+  buildWebPageSchema,
+  buildBreadcrumbSchema,
+  buildGraphSchema,
+} from "@/lib/seo/structured-data";
+
+const PAGE_URL = "https://gestorfinanceiro.pt/en/about";
 
 export const metadata: Metadata = {
   title: "About — Gestor Financeiro",
@@ -9,11 +17,43 @@ export const metadata: Metadata = {
     canonical: "/en/about",
     languages: { en: "/en/about", "pt-PT": "/sobre" },
   },
+  openGraph: {
+    title: "About — Gestor Financeiro",
+    description:
+      "Learn about Gestor Financeiro: free and up-to-date financial calculators for Portugal.",
+    url: PAGE_URL,
+    siteName: "Gestor Financeiro",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "About — Gestor Financeiro",
+    description:
+      "Learn about Gestor Financeiro: free and up-to-date financial calculators for Portugal.",
+  },
 };
+
+const structuredData = buildGraphSchema([
+  buildWebPageSchema({
+    type: "AboutPage",
+    name: "About — Gestor Financeiro",
+    description:
+      "Independent project providing free financial calculators for people living and working in Portugal.",
+    url: PAGE_URL,
+    inLanguage: "en",
+  }),
+  buildBreadcrumbSchema([
+    { name: "Home", url: "https://gestorfinanceiro.pt/en" },
+    { name: "About", url: PAGE_URL },
+  ]),
+]);
 
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 py-14">
+      <JsonLd schema={structuredData} />
+
       <nav className="mb-6 flex items-center gap-2 text-sm text-neutral-400">
         <Link href="/en" className="hover:text-neutral-600 transition-colors">
           Home

@@ -28,7 +28,7 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
   const copy =
     locale === "en"
       ? {
-          tagline: "Free financial calculators for Portuguese users.",
+          tagline: "Free financial calculators in Portugal.",
           calculators: "Calculators",
           netSalary: "Net Salary Calculator",
           company: "Company",
@@ -39,7 +39,7 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
           rights: `© ${year} Gestor Financeiro. All rights reserved.`,
         }
       : {
-          tagline: "Calculadoras financeiras gratuitas para portugueses.",
+          tagline: "Calculadoras financeiras gratuitas em Portugal.",
           calculators: "Calculadoras",
           netSalary: "Calculadora de Salário Líquido",
           company: "Empresa",

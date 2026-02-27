@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteLayout } from "@/components/ui/site-layout";
+import { JsonLd } from "@/components/ui/json-ld";
+import {
+  buildWebSiteSchema,
+  buildOrganizationSchema,
+  buildGraphSchema,
+} from "@/lib/seo/structured-data";
+
+const BASE_URL = "https://gestorfinanceiro.pt";
 
 export const metadata: Metadata = {
   title: "Gestor Financeiro — Free Financial Calculators for Portugal",
@@ -10,7 +18,27 @@ export const metadata: Metadata = {
     canonical: "/en",
     languages: { en: "/en", "pt-PT": "/" },
   },
+  openGraph: {
+    title: "Gestor Financeiro — Free Financial Calculators for Portugal",
+    description:
+      "Free and up-to-date financial calculators for Portugal: net salary simulator, IRS withholding, Social Security and more.",
+    url: `${BASE_URL}/en`,
+    siteName: "Gestor Financeiro",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Gestor Financeiro — Free Financial Calculators for Portugal",
+    description:
+      "Free and up-to-date financial calculators for Portugal: net salary simulator, IRS withholding, Social Security and more.",
+  },
 };
+
+const structuredData = buildGraphSchema([
+  buildWebSiteSchema(),
+  buildOrganizationSchema(),
+]);
 
 const CALCULATORS = [
   {
@@ -25,6 +53,8 @@ const CALCULATORS = [
 export default function EnglishHomePage() {
   return (
     <SiteLayout locale="en">
+      <JsonLd schema={structuredData} />
+
       {/* Hero */}
       <section className="bg-gradient-to-b from-primary-50 to-white py-16 px-4 sm:px-6 text-center">
         <div className="mx-auto max-w-2xl">

@@ -11,9 +11,9 @@ import {
 const PAGE_URL = "https://gestorfinanceiro.pt/en/calculators/net-salary";
 
 export const metadata: Metadata = {
-  title: "Net Salary Calculator 2025 — Portugal",
+  title: "Net Salary Calculator 2026 — Portugal",
   description:
-    "Calculate your Portuguese net take-home salary from gross. Includes Social Security (11%) and IRS withholding 2025 for Continental Portugal. Free and up to date.",
+    "Calculate your Portuguese net take-home salary from gross. Includes Social Security (11%) and IRS withholding 2026 for Continental Portugal, Madeira and Azores. Free and up to date.",
   alternates: {
     canonical: "/en/calculators/net-salary",
     languages: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Net Salary Calculator 2025 — Portugal",
+    title: "Net Salary Calculator 2026 — Portugal",
     description:
       "Calculate your Portuguese net salary instantly. Includes IRS, Social Security and meal allowance.",
     url: PAGE_URL,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Net Salary Calculator 2025 — Portugal",
+    title: "Net Salary Calculator 2026 — Portugal",
     description:
       "Calculate your Portuguese net salary instantly. Includes IRS, Social Security and meal allowance.",
   },
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
 
 const structuredData = buildGraphSchema([
   buildWebApplicationSchema({
-    name: "Portugal Net Salary Calculator 2025",
+    name: "Portugal Net Salary Calculator 2026",
     description:
-      "Free net salary calculator for Portugal. Computes IRS and Social Security deductions based on 2025 tax brackets.",
+      "Free net salary calculator for Portugal. Computes IRS and Social Security deductions based on 2026 tax brackets.",
     url: PAGE_URL,
   }),
   buildBreadcrumbSchema([
@@ -56,9 +56,9 @@ const structuredData = buildGraphSchema([
         "Net salary is gross salary minus mandatory deductions: Social Security (11% employee rate) and IRS withholding (variable based on income bracket, marital status, and number of dependants).",
     },
     {
-      question: "What is the Social Security rate for employees in Portugal in 2025?",
+      question: "What is the Social Security rate for employees in Portugal in 2026?",
       answer:
-        "The employee Social Security contribution rate for salaried workers (trabalhadores por conta de outrem) is 11% of gross salary in 2025.",
+        "The employee Social Security contribution rate for salaried workers (trabalhadores por conta de outrem) is 11% of gross salary in 2026.",
     },
     {
       question: "Is meal allowance subject to tax in Portugal?",

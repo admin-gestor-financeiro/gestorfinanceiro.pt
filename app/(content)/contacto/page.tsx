@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/ui/json-ld";
+import {
+  buildWebPageSchema,
+  buildBreadcrumbSchema,
+  buildGraphSchema,
+} from "@/lib/seo/structured-data";
+
+const PAGE_URL = "https://gestorfinanceiro.pt/contacto";
 
 export const metadata: Metadata = {
   title: "Contacto — Gestor Financeiro",
@@ -9,11 +17,43 @@ export const metadata: Metadata = {
     canonical: "/contacto",
     languages: { "pt-PT": "/contacto", en: "/en/contact" },
   },
+  openGraph: {
+    title: "Contacto — Gestor Financeiro",
+    description:
+      "Entre em contacto com a equipa do Gestor Financeiro para dúvidas, sugestões ou parcerias.",
+    url: PAGE_URL,
+    siteName: "Gestor Financeiro",
+    locale: "pt_PT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Contacto — Gestor Financeiro",
+    description:
+      "Entre em contacto com a equipa do Gestor Financeiro para dúvidas, sugestões ou parcerias.",
+  },
 };
+
+const structuredData = buildGraphSchema([
+  buildWebPageSchema({
+    type: "ContactPage",
+    name: "Contacto — Gestor Financeiro",
+    description:
+      "Entre em contacto com a equipa do Gestor Financeiro para dúvidas, sugestões ou parcerias.",
+    url: PAGE_URL,
+    inLanguage: "pt-PT",
+  }),
+  buildBreadcrumbSchema([
+    { name: "Início", url: "https://gestorfinanceiro.pt" },
+    { name: "Contacto", url: PAGE_URL },
+  ]),
+]);
 
 export default function ContactoPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 py-14">
+      <JsonLd schema={structuredData} />
+
       <nav className="mb-6 flex items-center gap-2 text-sm text-neutral-400">
         <Link href="/" className="hover:text-neutral-600 transition-colors">
           Início
