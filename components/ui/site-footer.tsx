@@ -10,10 +10,14 @@ const LINKS = {
   pt: {
     calculators: "/calculadoras",
     netSalary: "/calculadoras/salario-liquido",
+    about: "/sobre",
+    contact: "/contacto",
   },
   en: {
     calculators: "/en/calculators",
     netSalary: "/en/calculators/net-salary",
+    about: "/en/about",
+    contact: "/en/contact",
   },
 } as const;
 
@@ -27,6 +31,9 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
           tagline: "Free financial calculators for Portuguese users.",
           calculators: "Calculators",
           netSalary: "Net Salary Calculator",
+          company: "Company",
+          about: "About",
+          contact: "Contact",
           disclaimer:
             "The values shown are estimates. Always verify with official sources.",
           rights: `© ${year} Gestor Financeiro. All rights reserved.`,
@@ -35,6 +42,9 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
           tagline: "Calculadoras financeiras gratuitas para portugueses.",
           calculators: "Calculadoras",
           netSalary: "Calculadora de Salário Líquido",
+          company: "Empresa",
+          about: "Sobre nós",
+          contact: "Contacto",
           disclaimer:
             "Os valores apresentados são estimativas. Verifique sempre com fontes oficiais.",
           rights: `© ${year} Gestor Financeiro. Todos os direitos reservados.`,
@@ -55,7 +65,7 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
             <p className="text-sm text-neutral-500">{copy.tagline}</p>
           </div>
 
-          {/* Links */}
+          {/* Calculators */}
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-neutral-400">
               {copy.calculators}
@@ -67,6 +77,31 @@ export function SiteFooter({ locale = "pt", className }: SiteFooterProps) {
                   className="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
                 >
                   {copy.netSalary}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-neutral-400">
+              {copy.company}
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href={links.about}
+                  className="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
+                >
+                  {copy.about}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={links.contact}
+                  className="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
+                >
+                  {copy.contact}
                 </Link>
               </li>
             </ul>

@@ -28,6 +28,8 @@ const PATH_MAP: Record<string, string> = {
   "/": "/en",
   "/calculadoras": "/en/calculators",
   "/calculadoras/salario-liquido": "/en/calculators/net-salary",
+  "/sobre": "/en/about",
+  "/contacto": "/en/contact",
 };
 
 const REVERSE_MAP = Object.fromEntries(
