@@ -245,16 +245,22 @@ function PayslipRow({
   label, value, tooltip,
   isTotal = false, isPositive = false, isNegative = false, isSeparator = false,
   delta, deltaHigherIsBetter = true, deltaFormat = "currency",
+  reserveDeltaSpace = false, rowHidden = false,
 }: {
   label: string; value?: string; tooltip?: string;
   isTotal?: boolean; isPositive?: boolean; isNegative?: boolean; isSeparator?: boolean;
   delta?: number; deltaHigherIsBetter?: boolean; deltaFormat?: DeltaFormat;
+  /** Always render the delta line (invisible when no delta) to keep row height uniform across panels. */
+  reserveDeltaSpace?: boolean;
+  /** Render the row invisible — it still occupies space, keeping sibling rows aligned. */
+  rowHidden?: boolean;
 }) {
   if (isSeparator) {
     return <tr><td colSpan={2} className="py-1"><div className="border-t border-neutral-200" /></td></tr>;
   }
+  const showDeltaRow = delta !== undefined || reserveDeltaSpace;
   return (
-    <tr>
+    <tr className={cn(rowHidden && "invisible")}>
       <td className={cn("py-2 pr-4 text-sm", isTotal ? "font-semibold text-neutral-900" : "text-neutral-600")}>
         <span className="flex items-center gap-1.5">
           {label}
@@ -268,8 +274,13 @@ function PayslipRow({
         isNegative && "text-error-600",
       )}>
         <div>{value}</div>
-        {delta !== undefined && (
-          <DeltaChip delta={delta} higherIsBetter={deltaHigherIsBetter} format={deltaFormat} />
+        {showDeltaRow && (
+          <div className={cn(delta === undefined && "invisible")}>
+            {delta !== undefined
+              ? <DeltaChip delta={delta} higherIsBetter={deltaHigherIsBetter} format={deltaFormat} />
+              : <span className="text-xs">—</span>
+            }
+          </div>
         )}
       </td>
     </tr>
@@ -533,13 +544,16 @@ export function SalaryPayslip({
                 tooltip={t.grossTooltip}
                 delta={d?.gross}
                 deltaHigherIsBetter
+                reserveDeltaSpace={inCompareMode}
               />
-              {result.duodecimosMonthlyAmount > 0 && (
+              {/* Always render in compare mode so both columns have the same row count */}
+              {(result.duodecimosMonthlyAmount > 0 || inCompareMode) && (
                 <PayslipRow
                   label={t.duodecimosLabel}
                   value={`+ ${fmt(result.duodecimosMonthlyAmount)}`}
                   tooltip={t.duodecimosTooltip}
                   isPositive
+                  rowHidden={result.duodecimosMonthlyAmount <= 0}
                 />
               )}
               <PayslipRow
@@ -549,6 +563,7 @@ export function SalaryPayslip({
                 isNegative
                 delta={d?.ss}
                 deltaHigherIsBetter={false}
+                reserveDeltaSpace={inCompareMode}
               />
               <PayslipRow
                 label={t.irsLabel}
@@ -557,8 +572,10 @@ export function SalaryPayslip({
                 isNegative
                 delta={d?.irs}
                 deltaHigherIsBetter={false}
+                reserveDeltaSpace={inCompareMode}
               />
-              {result.mealAllowanceExempt > 0 && (
+              {/* Always render in compare mode so both columns have the same row count */}
+              {(result.mealAllowanceExempt > 0 || inCompareMode) && (
                 <PayslipRow
                   label={t.mealExemptLabel}
                   value={`+ ${fmt(result.mealAllowanceExempt)}`}
@@ -566,6 +583,8 @@ export function SalaryPayslip({
                   isPositive
                   delta={d?.meal}
                   deltaHigherIsBetter
+                  reserveDeltaSpace={inCompareMode}
+                  rowHidden={result.mealAllowanceExempt <= 0}
                 />
               )}
               <PayslipRow isSeparator label="" />
@@ -576,6 +595,7 @@ export function SalaryPayslip({
                 isTotal
                 delta={d?.net}
                 deltaHigherIsBetter
+                reserveDeltaSpace={inCompareMode}
               />
             </tbody>
           </table>
@@ -607,6 +627,7 @@ export function SalaryPayslip({
                 isTotal
                 delta={d?.employer}
                 deltaHigherIsBetter={false}
+                reserveDeltaSpace={inCompareMode}
               />
             </tbody>
           </table>
