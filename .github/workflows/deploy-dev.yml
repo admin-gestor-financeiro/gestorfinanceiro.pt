@@ -66,9 +66,10 @@ jobs:
                 \"description\": ${COMMITS_ESCAPED},
                 \"color\": 5763719,
                 \"fields\": [
-                  { \"name\": \"🌿  Branch\",  \"value\": \"\`${BRANCH}\`\",                        \"inline\": true },
-                  { \"name\": \"👤  Autor\",   \"value\": \"\`${AUTHOR}\`\",                        \"inline\": true },
-                  { \"name\": \"🔗  Commit\",  \"value\": \"[\`${SHORT_SHA}\`](${COMMIT_URL})\",    \"inline\": true }
+                  { \"name\": \"🌿  Branch\",  \"value\": \"\`${BRANCH}\`\",                                                              \"inline\": true },
+                  { \"name\": \"👤  Autor\",   \"value\": \"\`${AUTHOR}\`\",                                                              \"inline\": true },
+                  { \"name\": \"🔗  Commit\",  \"value\": \"[\`${SHORT_SHA}\`](${COMMIT_URL})\",                                          \"inline\": true },
+                  { \"name\": \"🌐  Site\",    \"value\": \"[gestorfinanceiro-dev.shiny-wind-7b01.workers.dev](https://gestorfinanceiro-dev.shiny-wind-7b01.workers.dev)\", \"inline\": false }
                 ],
                 \"footer\": {
                   \"text\": \"gestorfinanceiro.pt  ·  dev\"
