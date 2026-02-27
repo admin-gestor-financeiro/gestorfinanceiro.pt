@@ -8,20 +8,37 @@
     "binding": "ASSETS"
   },
 
-  // D1 database binding
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "gestorfinanceiro-db",
-      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID"
-    }
-  ],
+  // Environment-specific overrides
+  "env": {
+    // dev branch → gestorfinanceiro-dev.workers.dev (free Cloudflare subdomain)
+    "dev": {
+      "name": "gestorfinanceiro-dev",
+      "workers_dev": true
+    },
 
-  // R2 bucket binding
-  "r2_buckets": [
-    {
-      "binding": "BUCKET",
-      "bucket_name": "gestorfinanceiro-assets"
+    // main branch → gestorfinanceiro.pt (custom domain, must be proxied via Cloudflare DNS)
+    "production": {
+      "name": "gestorfinanceiro",
+      "workers_dev": false,
+      "routes": [
+        { "pattern": "gestorfinanceiro.pt/*", "custom_domain": true },
+        { "pattern": "www.gestorfinanceiro.pt/*", "custom_domain": true }
+      ]
     }
-  ]
+  }
+
+  // D1 and R2 bindings — uncomment when databases are created
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "gestorfinanceiro-db",
+  //     "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+  //   }
+  // ],
+  // "r2_buckets": [
+  //   {
+  //     "binding": "BUCKET",
+  //     "bucket_name": "gestorfinanceiro-assets"
+  //   }
+  // ]
 }

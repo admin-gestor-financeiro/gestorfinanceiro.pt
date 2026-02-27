@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "opennextjs-cloudflare build",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy:dev": "opennextjs-cloudflare build && wrangler deploy --env dev",
+    "deploy:prod": "opennextjs-cloudflare build && wrangler deploy --env production",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
