@@ -20,9 +20,9 @@
     "production": {
       "name": "gestorfinanceiro",
       "workers_dev": false,
-      "routes": [
-        { "pattern": "gestorfinanceiro.pt/*", "custom_domain": true },
-        { "pattern": "www.gestorfinanceiro.pt/*", "custom_domain": true }
+      "custom_domains": [
+        "gestorfinanceiro.pt",
+        "www.gestorfinanceiro.pt"
       ]
     }
   }
