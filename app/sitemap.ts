@@ -73,6 +73,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/calculadoras/simulador-imi-2026`,
+      lastModified: new Date("2026-03-02"),
+      changeFrequency: "yearly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/en/calculators/imi-calculator`,
+      lastModified: new Date("2026-03-02"),
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
 
   ];
 }

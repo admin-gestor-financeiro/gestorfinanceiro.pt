@@ -171,7 +171,7 @@ export function SiteHeader({ locale = "pt", className }: SiteHeaderProps) {
                   </button>
 
                   {isOpen && (
-                    <div className="absolute left-0 top-full z-40 pt-1">
+                    <div className="absolute right-0 top-full z-40 pt-1">
                       <div
                         role="menu"
                         className="min-w-[230px] rounded-lg border border-neutral-200 bg-white py-1 shadow-lg"

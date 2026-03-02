@@ -1,0 +1,2108 @@
+{
+  "source": "Portal das Finanças via idealista/news",
+  "reference_date": "2026-01-08",
+  "total_municipios": 300,
+  "unconfirmed_note": "8 municípios sem dados oficiais confirmados: Alfândega da Fé, Arganil, Belmonte, Corvo, Espinho, Gondomar, Manteigas e São João da Pesqueira",
+  "data": [
+    {
+      "municipio": "ABRANTES",
+      "imi_2026": "0,400%",
+      "imi_2025": "0,400%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ÁGUEDA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AGUIAR DA BEIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALANDROAL",
+      "imi_2026": "0,420%",
+      "imi_2025": "0,450%",
+      "variacao": "-0,030%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALBERGARIA-A-VELHA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALBUFEIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALCÁCER DO SAL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALCANENA",
+      "imi_2026": "0,365%",
+      "imi_2025": "0,375%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALCOBAÇA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALCOCHETE",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALCOUTIM",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALENQUER",
+      "imi_2026": "0,360%",
+      "imi_2025": "0,370%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALIJÓ",
+      "imi_2026": "0,320%",
+      "imi_2025": "0,330%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALJEZUR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALJUSTREL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALMADA",
+      "imi_2026": "0,350%",
+      "imi_2025": null,
+      "variacao": null,
+      "confirmed": true
+    },
+    {
+      "municipio": "ALMEIDA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALMEIRIM",
+      "imi_2026": "0,375%",
+      "imi_2025": "0,375%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALMODÔVAR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALPIARÇA",
+      "imi_2026": "0,360%",
+      "imi_2025": "0,370%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALTER DO CHÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALVAIÁZERE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ALVITO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AMADORA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AMARANTE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AMARES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ANADIA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "Angra do Heroísmo",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ANSIÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ARCOS DE VALDEVEZ",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ARMAMAR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AROUCA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ARRAIOLOS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ARRONCHES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ARRUDA DOS VINHOS",
+      "imi_2026": "0,360%",
+      "imi_2025": "0,365%",
+      "variacao": "-0,005%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AVEIRO",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AVIS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "AZAMBUJA",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BAIÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BARCELOS",
+      "imi_2026": "0,330%",
+      "imi_2025": "0,330%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BARRANCOS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BARREIRO",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BATALHA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BEJA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BENAVENTE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BOMBARRAL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BORBA",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BOTICAS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BRAGA",
+      "imi_2026": "0,320%",
+      "imi_2025": "0,330%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "BRAGANÇA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CABECEIRAS DE BASTO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CADAVAL",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CALDAS DA RAINHA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "Calheta - Azores",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CALHETA - MADEIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CÂMARA DE LOBOS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CAMINHA",
+      "imi_2026": "0,390%",
+      "imi_2025": "0,400%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CAMPO MAIOR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CANTANHEDE",
+      "imi_2026": "0,380%",
+      "imi_2025": "0,380%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CARRAZEDA DE ANSIÃES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CARREGAL DO SAL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CARTAXO",
+      "imi_2026": "0,450%",
+      "imi_2025": "0,450%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASCAIS",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,330%",
+      "variacao": "0,020%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASTANHEIRA DE PÊRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASTELO BRANCO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASTELO DE PAIVA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASTELO DE VIDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASTRO DAIRE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASTRO MARIM",
+      "imi_2026": "0,390%",
+      "imi_2025": "0,390%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CASTRO VERDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CELORICO DA BEIRA",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CELORICO DE BASTO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CHAMUSCA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CHAVES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CINFÃES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "COIMBRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CONDEIXA-A-NOVA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CONSTÂNCIA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CORUCHE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "COVILHÃ",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CRATO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "CUBA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ELVAS",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ENTRONCAMENTO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ESPOSENDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ESTARREJA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,350%",
+      "variacao": "-0,050%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ESTREMOZ",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ÉVORA",
+      "imi_2026": "0,370%",
+      "imi_2025": "0,370%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FAFE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FARO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FELGUEIRAS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FERREIRA DO ALENTEJO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,375%",
+      "variacao": "-0,075%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FERREIRA DO ZÊZERE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FIGUEIRA DA FOZ",
+      "imi_2026": "0,400%",
+      "imi_2025": "0,400%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FIGUEIRA DE CASTELO RODRIGO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FIGUEIRÓ DOS VINHOS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FORNOS DE ALGODRES",
+      "imi_2026": "0,410%",
+      "imi_2025": "0,410%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FREIXO DE ESPADA À CINTA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FRONTEIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FUNCHAL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "FUNDÃO",
+      "imi_2026": "0,380%",
+      "imi_2025": "0,380%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "GAVIÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "GÓIS",
+      "imi_2026": "0,330%",
+      "imi_2025": "0,330%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "GOLEGÃ",
+      "imi_2026": "0,330%",
+      "imi_2025": "0,340%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "GOUVEIA",
+      "imi_2026": "0,360%",
+      "imi_2025": "0,360%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "GRÂNDOLA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "GUARDA",
+      "imi_2026": "0,375%",
+      "imi_2025": "0,375%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "GUIMARÃES",
+      "imi_2026": "0,310%",
+      "imi_2025": "0,320%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "HORTA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "IDANHA-A-NOVA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "Ílhavo",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LAGOA",
+      "imi_2026": "0,360%",
+      "imi_2025": "0,360%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LAGOA - AZORES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LAGOS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LAJES DAS FLORES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LAJES DO PICO",
+      "imi_2026": "0,300%",
+      "imi_2025": null,
+      "variacao": null,
+      "confirmed": true
+    },
+    {
+      "municipio": "LAMEGO",
+      "imi_2026": "0,365%",
+      "imi_2025": "0,365%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LEIRIA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LISBOA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LOULÉ",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LOURES",
+      "imi_2026": "0,361%",
+      "imi_2025": "0,362%",
+      "variacao": "-0,001%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LOURINHÃ",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LOUSÃ",
+      "imi_2026": "0,380%",
+      "imi_2025": "0,390%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "LOUSADA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MAÇÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MACEDO DE CAVALEIROS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MACHICO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MADALENA",
+      "imi_2026": "0,300%",
+      "imi_2025": null,
+      "variacao": null,
+      "confirmed": true
+    },
+    {
+      "municipio": "MAFRA",
+      "imi_2026": "0,425%",
+      "imi_2025": "0,450%",
+      "variacao": "-0,025%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MAIA",
+      "imi_2026": "0,345%",
+      "imi_2025": "0,350%",
+      "variacao": "-0,005%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MANGUALDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MARCO DE CANAVESES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MARINHA GRANDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MARVÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MATOSINHOS",
+      "imi_2026": "0,370%",
+      "imi_2025": "0,370%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MEALHADA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MÊDA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MELGAÇO",
+      "imi_2026": "0,320%",
+      "imi_2025": "0,320%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "Mértola",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MESÃO FRIO",
+      "imi_2026": "0,400%",
+      "imi_2025": "0,400%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MIRANDA DO CORVO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MIRANDA DO DOURO",
+      "imi_2026": "0,300%",
+      "imi_2025": null,
+      "variacao": null,
+      "confirmed": true
+    },
+    {
+      "municipio": "MIRANDELA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MOGADOURO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MOIMENTA DA BEIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MOITA",
+      "imi_2026": "0,365%",
+      "imi_2025": "0,365%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONÇÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONCHIQUE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONDIM DE BASTO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONFORTE",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,350%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONTALEGRE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONTEMOR-O-NOVO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONTEMOR-O-VELHO",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MONTIJO",
+      "imi_2026": "0,310%",
+      "imi_2025": "0,320%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MORA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MORTÁGUA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MOURA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MOURÃO",
+      "imi_2026": "0,325%",
+      "imi_2025": "0,325%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MURÇA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "MURTOSA",
+      "imi_2026": "0,320%",
+      "imi_2025": "0,320%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "NAZARÉ",
+      "imi_2026": "0,450%",
+      "imi_2025": "0,450%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "NELAS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "NISA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "NORDESTE",
+      "imi_2026": "0,425%",
+      "imi_2025": "0,425%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ÓBIDOS",
+      "imi_2026": "0,360%",
+      "imi_2025": "0,360%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ODEMIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "ODIVELAS",
+      "imi_2026": "0,330%",
+      "imi_2025": "0,340%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OEIRAS",
+      "imi_2026": "0,450%",
+      "imi_2025": "0,300%",
+      "variacao": "0,150%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OLEIROS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OLHÃO",
+      "imi_2026": "0,370%",
+      "imi_2025": "0,370%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OLIVEIRA DE AZEMÉIS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OLIVEIRA DE FRADES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OLIVEIRA DO BAIRRO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OLIVEIRA DO HOSPITAL",
+      "imi_2026": "0,310%",
+      "imi_2025": "0,320%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OURÉM",
+      "imi_2026": "0,325%",
+      "imi_2025": "0,310%",
+      "variacao": "0,015%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OURIQUE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "OVAR",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PAÇOS DE FERREIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PALMELA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PAMPILHOSA DA SERRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PAREDES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PAREDES DE COURA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PEDRÓGÃO GRANDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PENACOVA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PENAFIEL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PENALVA DO CASTELO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PENAMACOR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PENEDONO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PENELA",
+      "imi_2026": "0,375%",
+      "imi_2025": "0,375%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PENICHE",
+      "imi_2026": "0,305%",
+      "imi_2025": "0,305%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PESO DA RÉGUA",
+      "imi_2026": "0,370%",
+      "imi_2025": "0,370%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PINHEL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "POMBAL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PONTA DELGADA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PONTA DO SOL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PONTE DA BARCA",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PONTE DE LIMA",
+      "imi_2026": "0,320%",
+      "imi_2025": "0,320%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PONTE DE SÔR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PORTALEGRE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PORTEL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PORTIMÃO",
+      "imi_2026": "0,370%",
+      "imi_2025": "0,380%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PORTO",
+      "imi_2026": "0,324%",
+      "imi_2025": "0,324%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PORTO DE MÓS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PORTO MONIZ",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PORTO SANTO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "Póvoa de Lanhoso",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,300%",
+      "variacao": "0,040%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PÓVOA DE VARZIM",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "POVOAÇÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "Praia da Vitória",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "PROENÇA-A-NOVA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "REDONDO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "REGUENGOS DE MONSARAZ",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "RESENDE",
+      "imi_2026": "0,375%",
+      "imi_2025": "0,375%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "RIBEIRA BRAVA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "RIBEIRA DE PENA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "RIBEIRA GRANDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "RIO MAIOR",
+      "imi_2026": "0,380%",
+      "imi_2025": "0,380%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SABROSA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SABUGAL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SALVATERRA DE MAGOS",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTA COMBA DÃO",
+      "imi_2026": "0,390%",
+      "imi_2025": "0,390%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTA CRUZ",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTA CRUZ DA GRACIOSA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTA CRUZ DAS FLORES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTA MARIA DA FEIRA",
+      "imi_2026": "0,365%",
+      "imi_2025": "0,365%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTA MARTA DE PENAGUIÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTANA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTARÉM",
+      "imi_2026": "0,367%",
+      "imi_2025": "0,368%",
+      "variacao": "-0,001%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTIAGO DO CACÉM",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,310%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SANTO TIRSO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SÃO BRÁS DE ALPORTEL",
+      "imi_2026": "0,410%",
+      "imi_2025": "0,410%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SÃO JOÃO DA MADEIRA",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SÃO PEDRO DO SUL",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SÃO ROQUE DO PICO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SÃO VICENTE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SARDOAL",
+      "imi_2026": "0,325%",
+      "imi_2025": "0,325%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SÁTÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SEIA",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SEIXAL",
+      "imi_2026": "0,325%",
+      "imi_2025": "0,330%",
+      "variacao": "-0,005%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SERNANCELHE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SERPA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SERTÃ",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SESIMBRA",
+      "imi_2026": "0,400%",
+      "imi_2025": "0,400%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SETÚBAL",
+      "imi_2026": "0,370%",
+      "imi_2025": "0,370%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SEVER DO VOUGA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SILVES",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SINES",
+      "imi_2026": "0,330%",
+      "imi_2025": "0,340%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SINTRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SOBRAL DE MONTE AGRAÇO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,360%",
+      "variacao": "-0,060%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SOURE",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "SOUSEL",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,360%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TÁBUA",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TABUAÇO",
+      "imi_2026": "0,400%",
+      "imi_2025": "0,400%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TAROUCA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TAVIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TERRAS DE BOURO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TOMAR",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,340%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TONDELA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TORRE DE MONCORVO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,450%",
+      "variacao": "-0,150%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TORRES NOVAS",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,360%",
+      "variacao": "-0,020%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TORRES VEDRAS",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TRANCOSO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "TROFA",
+      "imi_2026": "0,390%",
+      "imi_2025": "0,390%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VAGOS",
+      "imi_2026": "0,400%",
+      "imi_2025": "0,300%",
+      "variacao": "0,100%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VALE DE CAMBRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VALENÇA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VALONGO",
+      "imi_2026": "0,340%",
+      "imi_2025": "0,350%",
+      "variacao": "-0,010%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VALPAÇOS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VELAS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VENDAS NOVAS",
+      "imi_2026": "0,330%",
+      "imi_2025": "0,330%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VIANA DO ALENTEJO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VIANA DO CASTELO",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VIDIGUEIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VIEIRA DO MINHO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA DE REI",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA DO BISPO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA DO CONDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA DO PORTO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA FLOR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA FRANCA DE XIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA FRANCA DO CAMPO",
+      "imi_2026": "0,425%",
+      "imi_2025": "0,425%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA NOVA DA BARQUINHA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,320%",
+      "variacao": "-0,020%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA NOVA DE CERVEIRA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA NOVA DE FAMALICÃO",
+      "imi_2026": "0,335%",
+      "imi_2025": "0,335%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA NOVA DE FOZ CÔA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA NOVA DE GAIA",
+      "imi_2026": "0,360%",
+      "imi_2025": "0,360%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA NOVA DE PAIVA",
+      "imi_2026": "0,300%",
+      "imi_2025": null,
+      "variacao": null,
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA NOVA DE POIARES",
+      "imi_2026": "0,390%",
+      "imi_2025": "0,390%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA POUCA DE AGUIAR",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA REAL",
+      "imi_2026": "0,385%",
+      "imi_2025": "0,385%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA REAL DE SANTO ANTÓNIO",
+      "imi_2026": "0,450%",
+      "imi_2025": "0,450%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA VELHA DE RÓDÃO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA VERDE",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VILA VIÇOSA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VIMIOSO",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VINHAIS",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VISEU",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VIZELA",
+      "imi_2026": "0,350%",
+      "imi_2025": "0,350%",
+      "variacao": "0,000%",
+      "confirmed": true
+    },
+    {
+      "municipio": "VOUZELA",
+      "imi_2026": "0,300%",
+      "imi_2025": "0,300%",
+      "variacao": "0,000%",
+      "confirmed": true
+    }
+  ]
+}
